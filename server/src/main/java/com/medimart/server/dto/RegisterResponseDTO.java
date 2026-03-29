@@ -1,14 +1,15 @@
 package com.medimart.server.dto;
 
-public class LoginResponseDTO {
+public class RegisterResponseDTO {
+
     private String status;
     private String message;
-    private String username;
 
-    public LoginResponseDTO(String status, String message, String username) {
+    public RegisterResponseDTO() {}
+
+    public RegisterResponseDTO(String status, String message) {
         this.status = status;
         this.message = message;
-        this.username = username;
     }
 
     public String getStatus() {
@@ -26,13 +27,4 @@ public class LoginResponseDTO {
     public void setMessage(String message) {
         this.message = message;
     }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
 }
