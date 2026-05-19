@@ -1,0 +1,175 @@
+<div class="cashier-container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h2>Cashier Billing Dashboard</h2>
+  </div>
+
+  <div class="main-layout">
+
+    <!-- LEFT: MEDICINE LIST -->
+    <div class="medicine-section">
+
+      <h3>Medicines</h3>
+
+      <input
+        type="text"
+        placeholder="Search medicine..."
+        [(ngModel)]="searchText"
+        class="search-box"
+      />
+
+      <div class="medicine-list">
+
+        <div class="medicine-card" *ngFor="let med of medicines">
+
+          <!-- IMAGE -->
+          <div class="med-image">
+            <img src="assets/medicine.png" alt="medicine" />
+          </div>
+
+          <!-- DETAILS -->
+          <div class="med-details">
+
+            <h4>{{ med.name }}</h4>
+
+            <p class="composition">
+              {{ med.composition }}
+            </p>
+
+            <div class="badges">
+
+              <span class="price-badge">
+                ₹{{ med.price }}
+              </span>
+
+              <span
+                class="stock-badge"
+                [ngClass]="med.quantity > 10 ? 'in-stock' : 'low-stock'"
+              >
+                {{ med.quantity > 10 ? 'In Stock' : 'Low Stock' }}
+              </span>
+
+            </div>
+
+          </div>
+
+          <!-- ACTION -->
+          <!-- ACTION -->
+<div class="med-action">
+
+  <div class="qty-box">
+
+    <button (click)="decreaseQty(med)">-</button>
+
+    <input
+      type="number"
+      [(ngModel)]="med.selectedQty"
+      min="1"
+    />
+
+    <button (click)="increaseQty(med)">+</button>
+
+  </div>
+
+  <button (click)="addToCart(med)">
+    Add
+  </button>
+
+</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- RIGHT: CART -->
+    <div class="cart-section">
+
+      <h3>Cart</h3>
+
+      <table *ngIf="cart.length > 0">
+
+        <tr>
+          <th>Name</th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th>Total</th>
+          <th>Action</th>
+        </tr>
+
+        <tr *ngFor="let item of cart">
+
+          <td>{{ item.name }}</td>
+
+          <td>
+            <input
+              type="number"
+              [(ngModel)]="item.quantity"
+              (input)="updateQuantity(item)"
+              min="1"
+            />
+          </td>
+
+          <td>₹{{ item.price }}</td>
+
+          <td>₹{{ item.total }}</td>
+
+          <td>
+            <button (click)="removeFromCart(item.id)">
+              ❌
+            </button>
+          </td>
+
+        </tr>
+
+      </table>
+
+      <div *ngIf="cart.length === 0" class="empty-cart">
+  Cart is empty
+</div>
+
+      <hr />
+
+      <!-- DISCOUNT -->
+      <div class="discount-box">
+
+        <label>
+          <input type="checkbox" [(ngModel)]="discountEnabled" />
+          Enable Discount
+        </label>
+
+        <div *ngIf="discountEnabled">
+          <input
+            type="number"
+            [(ngModel)]="discountAmount"
+          />
+        </div>
+
+      </div>
+
+      <hr />
+
+      <!-- BILL -->
+      <div class="bill-summary">
+
+        <p>Subtotal: ₹{{ getSubtotal() }}</p>
+
+        <p *ngIf="discountEnabled">
+          Discount: -₹{{ discountAmount }}
+        </p>
+
+        <h3>Total: ₹{{ getFinalTotal() }}</h3>
+
+      </div>
+
+      <button class="invoice-btn" (click)="goToInvoice()">
+        Generate Invoice
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

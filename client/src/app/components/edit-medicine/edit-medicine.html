@@ -1,0 +1,76 @@
+<div class="edit-container">
+
+  <div class="edit-card">
+
+    <h2>Edit Medicine</h2>
+
+    <form (ngSubmit)="updateMedicine()">
+
+      <!-- NAME -->
+      <input
+        type="text"
+        placeholder="Medicine Name"
+        [(ngModel)]="medicine.name"
+        name="name"
+        required
+      />
+
+      <!-- COMPOSITION -->
+      <input
+        type="text"
+        placeholder="Composition"
+        [(ngModel)]="medicine.composition"
+        name="composition"
+      />
+
+      <!-- DESCRIPTION -->
+      <textarea
+        placeholder="Description"
+        [(ngModel)]="medicine.description"
+        name="description"
+      ></textarea>
+
+      <!-- ALTERNATE MEDICINE -->
+      <input
+        type="text"
+        placeholder="Alternate Medicine"
+        [(ngModel)]="medicine.alternateMedicine"
+        name="alternateMedicine"
+      />
+
+      <!-- QUANTITY -->
+      <input
+        type="number"
+        placeholder="Quantity"
+        [(ngModel)]="medicine.quantity"
+        name="quantity"
+        required
+      />
+
+      <!-- PRICE -->
+      <input
+        type="number"
+        placeholder="Price"
+        [(ngModel)]="medicine.price"
+        name="price"
+        required
+      />
+
+      <!-- EXPIRY DATE -->
+      <input
+        type="date"
+        [(ngModel)]="medicine.expiryDate"
+        name="expiryDate"
+        required
+      />
+
+      <!-- BUTTON -->
+      <button type="submit">
+        Update Medicine
+      </button>
+
+    </form>
+
+  </div>
+
+</div>

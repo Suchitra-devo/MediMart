@@ -1,24 +1,29 @@
 package com.medimart.server.controller;
 
 import org.springframework.web.bind.annotation.*;
-import com.medimart.server.dto.RegisterRequestDTO;
-import com.medimart.server.dto.RegisterResponseDTO;
+
+import com.medimart.server.entity.Role;
+import com.medimart.server.entity.User;
+import com.medimart.server.service.UserService;
 
 @RestController
 @RequestMapping("/api/register")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("*")
 public class RegisterController {
 
-@PostMapping
-public RegisterResponseDTO register(@RequestBody RegisterRequestDTO request) {
+    private final UserService userService;
 
-    if(request.getFirstName() == null || request.getPassword() == null) {
-        return new RegisterResponseDTO("FAILED", "Required fields missing");
+    public RegisterController(UserService userService) {
+        this.userService = userService;
     }
 
-    return new RegisterResponseDTO(
-            "SUCCESS",
-            "Registration successful"
-    );
-}
+    @PostMapping
+    public User register(@RequestBody User user) {
+
+        if (user.getRole() == null) {
+            user.setRole(Role.CUSTOMER);
+        }
+
+        return userService.register(user);
+    }
 }

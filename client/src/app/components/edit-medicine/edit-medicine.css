@@ -1,0 +1,65 @@
+.edit-container{
+
+  min-height:100vh;
+
+  background:linear-gradient(to right, #00897B, #004D40);
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+}
+
+.edit-card{
+
+  background:white;
+
+  padding:30px;
+
+  border-radius:12px;
+
+  width:350px;
+
+  box-shadow:0px 4px 12px rgba(0,0,0,0.2);
+}
+
+.edit-card h2{
+
+  margin-bottom:20px;
+
+  color:#00695C;
+}
+
+.edit-card form{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:15px;
+}
+
+.edit-card input{
+
+  padding:12px;
+
+  border:1px solid #ccc;
+
+  border-radius:6px;
+}
+
+.edit-card button{
+
+  background:#00695C;
+
+  color:white;
+
+  border:none;
+
+  padding:12px;
+
+  border-radius:6px;
+
+  cursor:pointer;
+}

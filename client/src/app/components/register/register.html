@@ -1,0 +1,69 @@
+<div class="register-container">
+
+  <div class="register-card">
+
+    <h2>Register</h2>
+
+    <input
+      type="text"
+      placeholder="Username"
+      [(ngModel)]="formData.username"
+      class="form-control">
+
+    <input
+      type="password"
+      placeholder="Password"
+      [(ngModel)]="formData.password"
+      class="form-control">
+
+    <!-- <select
+      [(ngModel)]="formData.role"
+      class="form-control">
+
+      <option value="CUSTOMER">
+        CUSTOMER
+      </option>
+
+ <option value="ADMIN">
+        ADMIN
+      </option>
+
+       <option value="CASHIER">
+        CASHIER
+      </option>
+
+      </select> -->
+
+
+
+    
+
+    <button
+      class="register-btn"
+      (click)="register()">
+
+      Register
+
+    </button>
+
+    <p class="login-text">
+
+      Already have account?
+
+      <a routerLink="/login">
+
+        Login
+
+      </a>
+
+    </p>
+
+    <p class="error">
+
+      {{ errorMessage }}
+
+    </p>
+
+  </div>
+
+</div>

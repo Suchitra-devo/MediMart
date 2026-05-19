@@ -1,0 +1,68 @@
+.add-container{
+
+  min-height:100vh;
+
+  background:linear-gradient(to right, #00897B, #004D40);
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
+
+  align-items:center;
+}
+
+.medicine-form{
+
+  background:white;
+
+  padding:30px;
+
+  border-radius:12px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:15px;
+
+  width:300px;
+}
+
+.medicine-form input{
+
+  padding:12px;
+
+  border:1px solid #ccc;
+
+  border-radius:6px;
+}
+
+.medicine-form button{
+
+  background:#00695C;
+
+  color:white;
+
+  border:none;
+
+  padding:12px;
+
+  border-radius:6px;
+
+  cursor:pointer;
+}
+
+.medicine-form textarea{
+
+  padding:12px;
+
+  border:1px solid #ccc;
+
+  border-radius:6px;
+
+  min-height:80px;
+
+  resize:none;
+}

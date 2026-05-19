@@ -1,0 +1,105 @@
+.invoice-container {
+  width: 800px;
+  margin: auto;
+  padding: 20px;
+  font-family: Arial;
+  background: white;
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+}
+
+.header-info {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0 20px;
+  font-size: 14px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: #007bff;
+  color: white;
+  padding: 10px;
+}
+
+td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.bill-summary {
+  margin-top: 20px;
+  text-align: right;
+  font-size: 15px;
+}
+
+.bill-summary p {
+  margin: 5px 0;
+}
+
+h2 {
+  margin-top: 10px;
+  color: #27ae60;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.discount-section {
+  margin: 15px 0;
+  padding: 10px;
+  border: 1px dashed #ccc;
+  color: #000;   /* ✅ makes all text black */
+}
+
+.discount-section label {
+  color: #000;
+  font-weight: 500;
+}
+
+.discount-input label {
+  color: #000;
+}
+
+.discount-input {
+  margin-top: 10px;
+}
+
+.bill-summary {
+  text-align: right;
+  font-size: 16px;
+}
+
+.bill-summary h2 {
+  color: #27ae60;
+}
+
+@media print {
+
+  button {
+    display: none !important;
+  }
+
+  input {
+    border: none !important;
+    outline: none !important;
+  }
+
+  .discount-section {
+    color: #000 !important;
+  }
+}

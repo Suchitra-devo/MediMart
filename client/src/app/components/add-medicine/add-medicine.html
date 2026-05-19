@@ -1,0 +1,68 @@
+<div class="add-container">
+
+  <h2>Add Medicine</h2>
+
+  <form
+  #medicineForm="ngForm"
+  class="medicine-form"
+  (ngSubmit)="saveMedicine()"
+>
+
+  <input
+    type="text"
+    placeholder="Medicine Name"
+    [(ngModel)]="medicine.name"
+    name="name"
+    required
+  />
+
+  <input
+    type="text"
+    placeholder="Composition"
+    [(ngModel)]="medicine.composition"
+    name="composition"
+  />
+
+  <textarea
+    placeholder="Description"
+    [(ngModel)]="medicine.description"
+    name="description"
+  ></textarea>
+
+  <input
+    type="text"
+    placeholder="Alternate Medicine"
+    [(ngModel)]="medicine.alternateMedicine"
+    name="alternateMedicine"
+  />
+
+  <input
+    type="number"
+    placeholder="Quantity Available"
+    [(ngModel)]="medicine.quantity"
+    name="quantity"
+    required
+  />
+
+  <input
+    type="number"
+    placeholder="Price Per Strip"
+    [(ngModel)]="medicine.price"
+    name="price"
+    required
+  />
+
+  <input
+    type="date"
+    [(ngModel)]="medicine.expiryDate"
+    name="expiryDate"
+    required
+  />
+
+  <button type="submit">
+  Save Medicine
+</button>
+
+</form>
+
+</div>

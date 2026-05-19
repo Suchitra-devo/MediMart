@@ -1,0 +1,69 @@
+<div class="invoice-container">
+
+  <h1>MediMart Pharmacy</h1>
+
+  <div class="header-info">
+
+    <p><b>Invoice No:</b> {{ invoiceNo }}</p>
+
+    <p><b>Date:</b> {{ date | date:'short' }}</p>
+
+  </div>
+
+  <table>
+
+    <tr>
+      <th>Medicine</th>
+      <th>Qty</th>
+      <th>Price</th>
+      <th>Total</th>
+    </tr>
+
+    <tr *ngFor="let item of cart">
+      <td>{{ item.name }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>₹{{ item.price }}</td>
+      <td>₹{{ item.total }}</td>
+    </tr>
+
+  </table>
+
+  <hr />
+
+  <!-- DISCOUNT SECTION -->
+  <div class="discount-section" *ngIf="discountEnabled">
+
+    <div class="discount-input">
+
+      <p><b>Discount Amount:</b> ₹{{ discountAmount }}</p>
+
+      <input
+        type="number"
+        [(ngModel)]="discountInput"
+        (input)="calculateBill()"
+      />
+
+    </div>
+
+  </div>
+
+  <hr />
+
+  <!-- BILL SUMMARY -->
+  <div class="bill-summary">
+
+    <p>Subtotal: ₹{{ subtotal }}</p>
+
+    <p *ngIf="discountEnabled">
+      Discount: -₹{{ discountAmount }}
+    </p>
+
+    <h2>Grand Total: ₹{{ total }}</h2>
+
+  </div>
+
+  <button (click)="printInvoice()">
+    Print Invoice
+  </button>
+
+</div>

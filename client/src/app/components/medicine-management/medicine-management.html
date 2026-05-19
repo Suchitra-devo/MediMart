@@ -1,0 +1,121 @@
+<div class="medicine-container">
+
+  <div class="topbar">
+    <h2>MediMart - Medicine Management</h2>
+
+    <div class="actions">
+
+      <input
+        type="text"
+        placeholder="Search medicine..."
+        [(ngModel)]="searchText"
+        (input)="applyFilter()"
+        class="search-box"
+      />
+
+      <button class="sort-btn" (click)="sortByName()">
+        Sort A–Z
+      </button>
+
+      <button class="add-btn" routerLink="/add-medicine">
+  + Add Medicine
+</button>
+
+    </div>
+  </div>
+
+  <div class="table-card">
+
+  <h3>Medicine Inventory</h3>
+
+  <!-- ADD MEDICINE FORM
+  <div class="form-section">
+
+    <input
+      type="text"
+      placeholder="Medicine Name"
+      [(ngModel)]="newMedicine.name"
+    />
+
+    <input
+      type="number"
+      placeholder="Price"
+      [(ngModel)]="newMedicine.price"
+    />
+
+    <input
+      type="number"
+      placeholder="Quantity"
+      [(ngModel)]="newMedicine.quantity"
+    />
+
+    <button class="add-btn" (click)="addMedicine()">
+      Add
+    </button>
+
+  </div> -->
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr *ngFor="let med of medicines">
+
+        <td>{{ med.id }}</td>
+        <td>{{ med.name }}</td>
+        <td>₹{{ med.price }}</td>
+        <td>{{ med.quantity }}</td>
+
+        <td>
+          <span [ngClass]="med.quantity > 10 ? 'in-stock' : 'low-stock'">
+
+            {{ med.quantity > 10 ? 'In Stock' : 'Low Stock' }}
+
+          </span>
+        </td>
+
+        <td>
+
+  <button
+  class="view-btn"
+  [routerLink]="['/medicine', med.id]"
+>
+  View
+</button>
+
+  <button
+  class="edit-btn"
+  [routerLink]="['/edit-medicine', med.id]"
+>
+  Edit
+</button>
+
+  <button
+    class="delete-btn"
+    (click)="deleteMedicine(med.id)"
+  >
+    Delete
+  </button>
+
+</td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>
+
+</div>

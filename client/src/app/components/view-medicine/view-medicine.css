@@ -1,0 +1,20 @@
+.expired {
+
+  color: red;
+
+  font-weight: bold;
+}
+
+.expiring {
+
+  color: orange;
+
+  font-weight: bold;
+}
+
+.valid {
+
+  color: green;
+
+  font-weight: bold;
+}
