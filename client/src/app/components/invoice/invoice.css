@@ -1,105 +1,92 @@
 .invoice-container {
   width: 800px;
-  margin: auto;
-  padding: 20px;
-  font-family: Arial;
-  background: white;
+  margin: 30px auto;
+  padding: 25px;
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #111111;   /* ✅ FIX: ensures all text is visible */
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
+/* TITLE */
 h1 {
   text-align: center;
-  color: #2c3e50;
+  color: #1f2937;
+  margin-bottom: 20px;
 }
 
+/* HEADER INFO */
 .header-info {
   display: flex;
   justify-content: space-between;
-  margin: 10px 0 20px;
+  margin-bottom: 20px;
   font-size: 14px;
+  color: #374151;
 }
 
+/* TABLE */
 table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 10px;
+  color: #111111;   /* ✅ FIX */
 }
 
 th {
-  background: #007bff;
+  background: #2563eb;
   color: white;
-  padding: 10px;
+  padding: 12px;
+  font-size: 14px;
 }
 
 td {
   padding: 10px;
   text-align: center;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #e5e7eb;
+  color: #111111;   /* ✅ FIX */
 }
 
+/* BILL SUMMARY */
 .bill-summary {
   margin-top: 20px;
   text-align: right;
-  font-size: 15px;
+  color: #111111;   /* ✅ FIX */
 }
 
 .bill-summary p {
   margin: 5px 0;
-}
-
-h2 {
-  margin-top: 10px;
-  color: #27ae60;
-}
-
-button {
-  margin-top: 20px;
-  padding: 10px 15px;
-  background: #28a745;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.discount-section {
-  margin: 15px 0;
-  padding: 10px;
-  border: 1px dashed #ccc;
-  color: #000;   /* ✅ makes all text black */
-}
-
-.discount-section label {
-  color: #000;
-  font-weight: 500;
-}
-
-.discount-input label {
-  color: #000;
-}
-
-.discount-input {
-  margin-top: 10px;
-}
-
-.bill-summary {
-  text-align: right;
-  font-size: 16px;
+  color: #374151;
 }
 
 .bill-summary h2 {
-  color: #27ae60;
+  margin-top: 10px;
+  color: #16a34a;
 }
 
-@media print {
+/* BUTTON */
+button {
+  margin-top: 20px;
+  padding: 10px 18px;
+  background: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
 
+button:hover {
+  background: #16a34a;
+}
+
+/* PRINT */
+@media print {
   button {
     display: none !important;
   }
 
-  input {
-    border: none !important;
-    outline: none !important;
-  }
-
-  .discount-section {
-    color: #000 !important;
+  .invoice-container {
+    box-shadow: none;
   }
 }

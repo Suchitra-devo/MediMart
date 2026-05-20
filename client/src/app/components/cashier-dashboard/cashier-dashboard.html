@@ -1,82 +1,101 @@
+<app-header></app-header>
 <div class="cashier-container">
 
   <!-- HEADER -->
   <div class="header">
-    <h2>Cashier Billing Dashboard</h2>
+
+    <div>
+      <h2>💊 Cashier Billing Dashboard</h2>
+      <p>Manage medicines and billing</p>
+    </div>
+
+    <!-- STORE TOGGLE -->
+    <div class="store-toggle-wrapper">
+
+      <span class="status-text"
+        [ngClass]="storeOpen ? 'open-text' : 'closed-text'">
+
+        {{ storeOpen ? '🟢 STORE OPEN' : '🔴 STORE CLOSED' }}
+
+      </span>
+
+      <label class="switch">
+        <input type="checkbox"
+               [checked]="storeOpen"
+               (change)="toggleStoreStatus()">
+        <span class="slider"></span>
+      </label>
+
+    </div>
+
   </div>
 
+  <!-- MAIN -->
   <div class="main-layout">
 
-    <!-- LEFT: MEDICINE LIST -->
+    <!-- LEFT -->
     <div class="medicine-section">
 
-      <h3>Medicines</h3>
+      <div class="section-header">
+        <h3>Available Medicines</h3>
+        <span class="count-badge">
+          {{ medicines.length }} Items
+        </span>
+      </div>
 
-      <input
-        type="text"
-        placeholder="Search medicine..."
-        [(ngModel)]="searchText"
-        class="search-box"
-      />
+      <div class="search-wrapper">
+        <input
+          type="text"
+          placeholder="Search medicines..."
+          [(ngModel)]="searchText"
+          (ngModelChange)="applyFilter()"
+          class="search-box"
+        />
+      </div>
 
       <div class="medicine-list">
 
-        <div class="medicine-card" *ngFor="let med of medicines">
+        <div class="medicine-card"
+             *ngFor="let med of medicines; trackBy: trackByMedicine">
 
-          <!-- IMAGE -->
           <div class="med-image">
-            <img src="assets/medicine.png" alt="medicine" />
+            <img src="assets/medicine.png" />
           </div>
 
-          <!-- DETAILS -->
           <div class="med-details">
-
             <h4>{{ med.name }}</h4>
-
-            <p class="composition">
-              {{ med.composition }}
-            </p>
+            <p class="composition">{{ med.composition }}</p>
 
             <div class="badges">
+              <span class="price-badge">₹{{ med.price }}</span>
 
-              <span class="price-badge">
-                ₹{{ med.price }}
-              </span>
+              <span class="stock-badge"
+                    [ngClass]="med.quantity > 10 ? 'in-stock' : 'low-stock'">
 
-              <span
-                class="stock-badge"
-                [ngClass]="med.quantity > 10 ? 'in-stock' : 'low-stock'"
-              >
                 {{ med.quantity > 10 ? 'In Stock' : 'Low Stock' }}
+
               </span>
-
             </div>
-
           </div>
 
-          <!-- ACTION -->
-          <!-- ACTION -->
-<div class="med-action">
+          <div class="med-action">
 
-  <div class="qty-box">
+            <div class="qty-box">
+              <button class="minus-btn" (click)="decreaseQty(med)">-</button>
 
-    <button (click)="decreaseQty(med)">-</button>
+              <input type="number"
+                     [(ngModel)]="med.selectedQty"
+                     min="1" />
 
-    <input
-      type="number"
-      [(ngModel)]="med.selectedQty"
-      min="1"
-    />
+              <button class="plus-btn" (click)="increaseQty(med)">+</button>
+            </div>
 
-    <button (click)="increaseQty(med)">+</button>
+            <button class="add-btn"
+                    (click)="addToCart(med)">
+              Add To Cart
+            </button>
 
-  </div>
-
-  <button (click)="addToCart(med)">
-    Add
-  </button>
-
-</div>
+          </div>
 
         </div>
 
@@ -84,19 +103,44 @@
 
     </div>
 
-    <!-- RIGHT: CART -->
+    <!-- RIGHT -->
     <div class="cart-section">
 
-      <h3>Cart</h3>
+      <h3>
+        🛒 Billing Cart
+        <span class="cart-count">
+          ({{ cart.length }} items)
+        </span>
+      </h3>
 
+      <!-- CUSTOMER -->
+      <div class="customer-box">
+
+        <label>Customer Name</label>
+
+        <input type="text"
+               [(ngModel)]="customerName"
+               placeholder="Enter customer name"
+               class="customer-input" />
+
+      </div>
+
+      <!-- EMPTY -->
+      <div *ngIf="cart.length === 0"
+           class="empty-cart">
+
+        🛒 No items added yet
+
+      </div>
+
+      <!-- CART TABLE -->
       <table *ngIf="cart.length > 0">
 
         <tr>
           <th>Name</th>
           <th>Qty</th>
-          <th>Price</th>
           <th>Total</th>
-          <th>Action</th>
+          <th></th>
         </tr>
 
         <tr *ngFor="let item of cart">
@@ -104,20 +148,17 @@
           <td>{{ item.name }}</td>
 
           <td>
-            <input
-              type="number"
-              [(ngModel)]="item.quantity"
-              (input)="updateQuantity(item)"
-              min="1"
-            />
+            <input type="number"
+                   [(ngModel)]="item.quantity"
+                   (input)="updateQuantity(item)"
+                   min="1" />
           </td>
-
-          <td>₹{{ item.price }}</td>
 
           <td>₹{{ item.total }}</td>
 
           <td>
-            <button (click)="removeFromCart(item.id)">
+            <button class="delete-btn"
+                    (click)="removeFromCart(item.id)">
               ❌
             </button>
           </td>
@@ -126,30 +167,21 @@
 
       </table>
 
-      <div *ngIf="cart.length === 0" class="empty-cart">
-  Cart is empty
-</div>
-
-      <hr />
-
       <!-- DISCOUNT -->
       <div class="discount-box">
 
         <label>
-          <input type="checkbox" [(ngModel)]="discountEnabled" />
+          <input type="checkbox"
+                 [(ngModel)]="discountEnabled" />
           Enable Discount
         </label>
 
-        <div *ngIf="discountEnabled">
-          <input
-            type="number"
-            [(ngModel)]="discountAmount"
-          />
-        </div>
+        <input *ngIf="discountEnabled"
+               type="number"
+               [(ngModel)]="discountAmount"
+               placeholder="Discount Amount" />
 
       </div>
-
-      <hr />
 
       <!-- BILL -->
       <div class="bill-summary">
@@ -160,13 +192,24 @@
           Discount: -₹{{ discountAmount }}
         </p>
 
-        <h3>Total: ₹{{ getFinalTotal() }}</h3>
+        <h2>Grand Total: ₹{{ getFinalTotal() }}</h2>
 
       </div>
 
-      <button class="invoice-btn" (click)="goToInvoice()">
-        Generate Invoice
-      </button>
+      <!-- INVOICE ACTIONS -->
+<div class="invoice-actions">
+
+  <button class="invoice-btn generate-btn"
+          (click)="goToInvoice()">
+    Generate Invoice
+  </button>
+
+  <button class="invoice-btn print-btn"
+          (click)="printInvoice()">
+    Print
+  </button>
+
+</div>
 
     </div>
 

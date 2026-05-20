@@ -1,44 +1,133 @@
 <div class="login-container">
 
-  <div class="login-card">
+  <div class="overlay">
 
-    <h2>MediMart Login</h2>
+    <div class="login-card">
 
-    <input
-      type="text"
-      placeholder="Username"
-      [(ngModel)]="formData.username"
-      class="form-control">
+      <h1>
+        💊 MediMart
+      </h1>
 
-    <input
-      type="password"
-      placeholder="Password"
-      [(ngModel)]="formData.password"
-      class="form-control">
+      <p class="subtitle">
+        Smart Pharmacy Management System
+      </p>
 
-    <button
-      class="login-btn"
-      (click)="login()">
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="login()"
+      >
 
-      Login
+        <!-- USERNAME -->
+        <div class="input-group">
 
-    </button>
+          <label>
+            Username
+          </label>
 
-    <p class="error" *ngIf="errorMessage">
-      {{ errorMessage }}
-    </p>
+          <input
+            type="text"
+            placeholder="Enter username"
+            formControlName="username"
+          />
 
-    <p class="register-text">
-      Don't have an account?
+          <small
+            *ngIf="
+              loginForm
+              .get('username')
+              ?.touched &&
+              loginForm
+              .get('username')
+              ?.invalid
+            "
+          >
+            Username is required
+          </small>
 
-      <a
-        routerLink="/register"
-        class="register-link">
+        </div>
 
-        Register
+        <!-- PASSWORD -->
+        <div class="input-group">
 
-      </a>
-    </p>
+          <label>
+            Password
+          </label>
+
+          <input
+            [type]="
+              hidePassword
+              ? 'password'
+              : 'text'
+            "
+            placeholder="Enter password"
+            formControlName="password"
+          />
+
+          <small
+            *ngIf="
+              loginForm
+              .get('password')
+              ?.touched &&
+              loginForm
+              .get('password')
+              ?.invalid
+            "
+          >
+            Password must contain
+            minimum 4 characters
+          </small>
+
+        </div>
+
+        <!-- SHOW PASSWORD -->
+        <div class="show-password">
+
+          <input
+            type="checkbox"
+            (change)="
+              hidePassword =
+              !hidePassword
+            "
+          />
+
+          <span>
+            Show Password
+          </span>
+
+        </div>
+
+        <!-- ERROR -->
+        <p
+          class="error"
+          *ngIf="errorMessage"
+        >
+          {{ errorMessage }}
+        </p>
+
+        <!-- LOGIN BUTTON -->
+        <button
+          type="submit"
+          class="login-btn"
+        >
+          Login
+        </button>
+
+      </form>
+
+      <!-- REGISTER -->
+      <p class="register-text">
+
+        Don't have an account?
+
+        <a
+          routerLink="/register"
+          class="register-link"
+        >
+          Register
+        </a>
+
+      </p>
+
+    </div>
 
   </div>
 

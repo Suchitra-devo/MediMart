@@ -1,0 +1,26 @@
+<div class="navbar">
+
+  <!-- LOGO -->
+  <div class="logo">
+    💊 MediMart
+  </div>
+
+  <!-- LANDING PAGE -->
+  <button
+    *ngIf="isLandingPage()"
+    class="login-btn"
+    (click)="goToLogin()"
+  >
+    Login
+  </button>
+
+  <!-- OTHER PAGES -->
+  <button
+    *ngIf="!isLandingPage() && !isAuthPage()"
+    class="logout-btn"
+    (click)="logout()"
+  >
+    Logout
+  </button>
+
+</div>

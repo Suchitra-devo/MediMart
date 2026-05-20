@@ -1,0 +1,257 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+.landing-container{
+
+  height:100vh;
+
+  background:
+    linear-gradient(
+      rgba(0,0,0,0.65),
+      rgba(0,0,0,0.75)
+    ),
+
+    url('https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=2070&auto=format&fit=crop');
+
+  background-size:cover;
+  background-position:center;
+
+  animation:zoomBg 15s infinite alternate;
+}
+
+@keyframes zoomBg{
+
+  from{
+    background-size:100%;
+  }
+
+  to{
+    background-size:110%;
+  }
+}
+
+.overlay{
+
+  height:100%;
+
+  display:flex;
+  flex-direction:column;
+}
+
+/* NAVBAR */
+.navbar{
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:20px 40px;
+}
+
+.logo{
+
+  color:white;
+
+  font-size:28px;
+  font-weight:bold;
+}
+
+.login-btn{
+
+  background:#00c853;
+
+  color:white;
+
+  border:none;
+
+  padding:10px 24px;
+
+  border-radius:30px;
+
+  font-size:16px;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.login-btn:hover{
+
+  background:#00e676;
+
+  transform:scale(1.05);
+}
+
+/* HERO */
+.hero-section{
+
+  flex:1;
+
+  display:flex;
+  flex-direction:column;
+
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+
+  color:white;
+
+  padding:20px;
+}
+
+.welcome-text{
+
+  font-size:22px;
+
+  color:#e2e8f0;
+
+  margin-bottom:10px;
+}
+
+.store-name{
+
+  font-size:70px;
+
+  font-weight:bold;
+
+  letter-spacing:2px;
+
+  margin-bottom:15px;
+
+  animation:fadeIn 1s ease;
+}
+
+.greeting{
+
+  font-size:28px;
+
+  color:#00e676;
+
+  margin-bottom:20px;
+}
+
+.live-date-time{
+
+  background:rgba(255,255,255,0.08);
+
+  padding:12px 20px;
+
+  border-radius:14px;
+
+  backdrop-filter:blur(8px);
+
+  margin-bottom:25px;
+
+  display:flex;
+  flex-direction:column;
+
+  justify-content:center;
+  align-items:center;
+
+  min-width:280px;
+}
+
+.live-date-time p{
+
+  font-size:15px;
+
+  margin:3px 0;
+
+  color:#f8fafc;
+}
+
+.store-address{
+
+  width:60%;
+
+  line-height:1.7;
+
+  font-size:20px;
+
+  margin-bottom:25px;
+}
+
+/* STORE STATUS */
+.store-status{
+
+  padding:14px 30px;
+
+  border-radius:40px;
+
+  font-size:18px;
+
+  font-weight:bold;
+
+  animation:pulse 2s infinite;
+}
+
+.open{
+
+  background:rgba(0,200,83,0.15);
+
+  border:1px solid #00e676;
+
+  color:#00ff95;
+}
+
+.closed{
+
+  background:rgba(255,82,82,0.15);
+
+  border:1px solid #ff5252;
+
+  color:#ff7676;
+}
+
+@keyframes pulse{
+
+  0%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.03);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+}
+
+@keyframes fadeIn{
+
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+  .store-name{
+    font-size:42px;
+  }
+
+  .store-address{
+    width:90%;
+    font-size:16px;
+  }
+
+  .navbar{
+    padding:15px 20px;
+  }
+}

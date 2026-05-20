@@ -1,0 +1,62 @@
+<div class="landing-container">
+
+  <div class="overlay">
+
+    <app-header></app-header>
+
+    <!-- HERO -->
+    <div class="hero-section">
+
+      <h3 class="welcome-text">
+        Welcome to
+      </h3>
+
+      <h1 class="store-name">
+        GENERIC MEDICAL STORE
+      </h1>
+
+      <h2 class="greeting">
+        {{ greeting }}
+      </h2>
+
+      <!-- DATE TIME -->
+      <div class="live-date-time">
+
+        <p>
+          📅
+          {{ currentDate | date:'fullDate' }}
+        </p>
+
+        <p>
+          ⏰
+          {{ currentDate | date:'hh:mm:ss a' }}
+        </p>
+
+      </div>
+
+      <p class="store-address">
+        Pradhan Mantri Bharatiya Janaushadhi Kendra, Hydershakote.
+      </p>
+
+      <!-- STORE STATUS -->
+      <div
+        class="store-status"
+        [ngClass]="storeOpen ? 'open' : 'closed'"
+      >
+
+        <span *ngIf="storeOpen">
+          🟢 Store Open
+        </span>
+
+        <span *ngIf="!storeOpen">
+          🔴 Store Closed
+          (Opens at {{ openingTime }})
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

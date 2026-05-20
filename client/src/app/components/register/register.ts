@@ -1,16 +1,31 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
 
-import { ApiService } from '../../services/api.service';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+  AbstractControl,
+  ValidationErrors
+} from '@angular/forms';
+
+import { CommonModule }
+from '@angular/common';
+
+import {
+  Router,
+  RouterModule
+} from '@angular/router';
+
+import { ApiService }
+from '../../services/api.service';
 
 @Component({
   selector: 'app-register',
   standalone: true,
 
   imports: [
-    FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     RouterModule
   ],
@@ -20,27 +35,127 @@ import { ApiService } from '../../services/api.service';
 })
 export class RegisterComponent {
 
-  formData: any = {
-
-    username: '',
-    password: '',
-    role: 'CUSTOMER'
-  };
+  registerForm: FormGroup;
 
   errorMessage = '';
 
+  hidePassword = true;
+
+  hideConfirmPassword = true;
+
   constructor(
     private api: ApiService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private fb: FormBuilder
+  ) {
+
+    this.registerForm =
+      this.fb.group({
+
+      
+
+      username: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3)
+        ]
+      ],
+
+      phone: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[0-9]{10}$')
+        ]
+      ],
+
+      email: [
+        '',
+        Validators.email
+      ],
+
+      address: [''],
+
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(4)
+        ]
+      ],
+
+      confirmPassword: [
+        '',
+        Validators.required
+      ],
+
+      role: ['CUSTOMER']
+
+    },
+    {
+      validators:
+        this.passwordMatchValidator
+    });
+  }
+
+  passwordMatchValidator(
+    form: AbstractControl
+  ): ValidationErrors | null {
+
+    const password =
+      form.get('password')?.value;
+
+    const confirmPassword =
+      form.get('confirmPassword')?.value;
+
+    return password === confirmPassword
+      ? null
+      : { passwordMismatch: true };
+  }
 
   register() {
 
-    this.api.register(this.formData).subscribe({
+    if (this.registerForm.invalid) {
 
-      next: (res: any) => {
+      this.registerForm
+        .markAllAsTouched();
 
-        alert("Registration Successful");
+      return;
+    }
+
+    const payload = {
+
+      
+
+      username:
+        this.registerForm.value.username,
+
+      phone:
+        this.registerForm.value.phone,
+
+      email:
+        this.registerForm.value.email,
+
+      address:
+        this.registerForm.value.address,
+
+      password:
+        this.registerForm.value.password,
+
+      role:
+        this.registerForm.value.role
+    };
+
+    this.api
+      .register(payload)
+      .subscribe({
+
+      next: () => {
+
+        alert(
+          "Registration Successful"
+        );
 
         this.router.navigate(['/login']);
       },

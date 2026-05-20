@@ -13,15 +13,55 @@ public class RegisterController {
 
     private final UserService userService;
 
-    public RegisterController(UserService userService) {
+    public RegisterController(
+            UserService userService
+    ) {
+
         this.userService = userService;
     }
 
     @PostMapping
-    public User register(@RequestBody User user) {
+    public User register(
+            @RequestBody User user
+    ) {
 
+        // DEFAULT ROLE
         if (user.getRole() == null) {
-            user.setRole(Role.CUSTOMER);
+
+            user.setRole(
+                Role.CUSTOMER
+            );
+        }
+
+        // SAFETY VALIDATION
+        if (
+            user.getUsername() == null ||
+            user.getUsername().trim().isEmpty()
+        ) {
+
+            throw new RuntimeException(
+                "Username is required"
+            );
+        }
+
+        if (
+            user.getPhone() == null ||
+            user.getPhone().trim().isEmpty()
+        ) {
+
+            throw new RuntimeException(
+                "Phone number is required"
+            );
+        }
+
+        if (
+            user.getPassword() == null ||
+            user.getPassword().trim().isEmpty()
+        ) {
+
+            throw new RuntimeException(
+                "Password is required"
+            );
         }
 
         return userService.register(user);

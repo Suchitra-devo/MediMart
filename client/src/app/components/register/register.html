@@ -1,68 +1,247 @@
 <div class="register-container">
 
-  <div class="register-card">
+  <div class="overlay">
 
-    <h2>Register</h2>
+    <div class="register-card">
 
-    <input
-      type="text"
-      placeholder="Username"
-      [(ngModel)]="formData.username"
-      class="form-control">
+      <h1>
+        💊 MediMart
+      </h1>
 
-    <input
-      type="password"
-      placeholder="Password"
-      [(ngModel)]="formData.password"
-      class="form-control">
+      <p class="subtitle">
+        Create Your Account
+      </p>
 
-    <!-- <select
-      [(ngModel)]="formData.role"
-      class="form-control">
+      <form
+        [formGroup]="registerForm"
+        (ngSubmit)="register()"
+      >
 
-      <option value="CUSTOMER">
-        CUSTOMER
-      </option>
+        <!-- USERNAME -->
+        <div class="input-group">
 
- <option value="ADMIN">
-        ADMIN
-      </option>
+          <label>
+            Username
+          </label>
 
-       <option value="CASHIER">
-        CASHIER
-      </option>
+          <input
+            type="text"
+            placeholder="Enter username"
+            formControlName="username"
+          />
 
-      </select> -->
+          <small
+            *ngIf="
+              registerForm
+              .get('username')
+              ?.touched &&
+              registerForm
+              .get('username')
+              ?.hasError('required')
+            "
+          >
+            Username is required
+          </small>
 
+        </div>
 
+        <!-- PHONE -->
+        <div class="input-group">
 
-    
+          <label>
+            Phone Number
+          </label>
 
-    <button
-      class="register-btn"
-      (click)="register()">
+          <input
+            type="text"
+            placeholder="Enter phone number"
+            formControlName="phone"
+          />
 
-      Register
+          <small
+            *ngIf="
+              registerForm
+              .get('phone')
+              ?.touched &&
+              registerForm
+              .get('phone')
+              ?.hasError('required')
+            "
+          >
+            Phone number is required
+          </small>
 
-    </button>
+          <small
+            *ngIf="
+              registerForm
+              .get('phone')
+              ?.touched &&
+              registerForm
+              .get('phone')
+              ?.hasError('pattern')
+            "
+          >
+            Enter valid 10 digit number
+          </small>
 
-    <p class="login-text">
+        </div>
 
-      Already have account?
+        <!-- EMAIL -->
+        <div class="input-group">
 
-      <a routerLink="/login">
+          <label>
+            Email (Optional)
+          </label>
 
-        Login
+          <input
+            type="email"
+            placeholder="Enter email"
+            formControlName="email"
+          />
 
-      </a>
+        </div>
 
-    </p>
+        <!-- ADDRESS -->
+        <div class="input-group">
 
-    <p class="error">
+          <label>
+            Address (Optional)
+          </label>
 
-      {{ errorMessage }}
+          <textarea
+            rows="3"
+            placeholder="Enter address"
+            formControlName="address"
+          ></textarea>
 
-    </p>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="input-group">
+
+          <label>
+            Password
+          </label>
+
+          <input
+            [type]="
+              hidePassword
+              ? 'password'
+              : 'text'
+            "
+            placeholder="Enter password"
+            formControlName="password"
+          />
+
+          <small
+            *ngIf="
+              registerForm
+              .get('password')
+              ?.touched &&
+              registerForm
+              .get('password')
+              ?.hasError('required')
+            "
+          >
+            Password is required
+          </small>
+
+        </div>
+
+        <!-- CONFIRM PASSWORD -->
+        <div class="input-group">
+
+          <label>
+            Confirm Password
+          </label>
+
+          <input
+            [type]="
+              hideConfirmPassword
+              ? 'password'
+              : 'text'
+            "
+            placeholder="Re-enter password"
+            formControlName="confirmPassword"
+          />
+
+          <small
+            *ngIf="
+              registerForm
+              .get('confirmPassword')
+              ?.touched &&
+              registerForm
+              .get('confirmPassword')
+              ?.hasError('required')
+            "
+          >
+            Confirm password is required
+          </small>
+
+          <small
+            *ngIf="
+              registerForm.errors
+              ?.['passwordMismatch']
+            "
+          >
+            Passwords do not match
+          </small>
+
+        </div>
+
+        <!-- SHOW PASSWORD -->
+        <div class="show-password">
+
+          <input
+            type="checkbox"
+            (change)="
+              hidePassword =
+              !hidePassword;
+
+              hideConfirmPassword =
+              !hideConfirmPassword
+            "
+          />
+
+          <span>
+            Show Passwords
+          </span>
+
+        </div>
+
+        <!-- ERROR -->
+        <p
+          class="error"
+          *ngIf="errorMessage"
+        >
+          {{ errorMessage }}
+        </p>
+
+        <!-- BUTTON -->
+        <button
+          type="submit"
+          class="register-btn"
+        >
+          Register
+        </button>
+
+      </form>
+
+      <!-- LOGIN -->
+      <p class="login-text">
+
+        Already have an account?
+
+        <a
+          routerLink="/login"
+          class="login-link"
+        >
+          Login
+        </a>
+
+      </p>
+
+    </div>
 
   </div>
 
