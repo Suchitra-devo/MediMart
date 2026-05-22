@@ -148,3 +148,22 @@ body.dark-theme td {
   border-bottom:
     1px solid #334155;
 }
+body.dark-theme {
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+body.dark-theme input,
+body.dark-theme textarea,
+body.dark-theme select {
+  background: #1e293b;
+  color: white;
+  border: 1px solid #334155;
+}
+
+body.dark-theme .card,
+body.dark-theme .form-card,
+body.dark-theme .invoice-container {
+  background: #1e293b !important;
+  color: white;
+}

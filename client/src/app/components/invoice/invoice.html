@@ -1,5 +1,6 @@
 <div #invoiceContent class="invoice-container">
 
+  <!-- HEADER -->
   <div class="invoice-header">
 
     <h1>MediMart Pharmacy Invoice</h1>
@@ -12,6 +13,7 @@
 
   </div>
 
+  <!-- TABLE -->
   <table>
 
     <tr>
@@ -19,25 +21,59 @@
       <th>Qty</th>
       <th>Price</th>
       <th>Total</th>
+      <th>Action</th>
     </tr>
 
     <tr *ngFor="let item of cart">
+
+      <!-- NAME -->
       <td>{{ item.name }}</td>
-      <td>{{ item.quantity }}</td>
+
+      <!-- QTY (EDITABLE) -->
+      <td>
+        <input
+          type="number"
+          min="1"
+          [(ngModel)]="item.quantity"
+          (ngModelChange)="updateQuantity(item, $event)"
+        />
+      </td>
+
+      <!-- PRICE -->
       <td>₹{{ item.price }}</td>
-      <td>₹{{ item.total }}</td>
+
+      <!-- TOTAL -->
+      <td>₹{{ item.price * item.quantity }}</td>
+
+      <!-- ACTION -->
+      <td>
+        <button
+          class="remove-btn"
+          (click)="removeItem(item)"
+        >
+          ❌ Remove
+        </button>
+      </td>
+
     </tr>
 
   </table>
 
   <hr />
 
+  <!-- DISCOUNT -->
   <div class="discount-section" *ngIf="discountAmount > 0">
-    <p><b>Discount Applied:</b> ₹{{ discountAmount }}</p>
+
+    <p>
+      <b>Discount Applied:</b>
+      ₹{{ discountAmount }}
+    </p>
+
   </div>
 
   <hr />
 
+  <!-- BILL SUMMARY -->
   <div class="bill-summary">
 
     <p><b>Subtotal:</b> ₹{{ subtotal }}</p>
@@ -47,6 +83,19 @@
     </p>
 
     <h2>Grand Total: ₹{{ total }}</h2>
+
+  </div>
+
+  <!-- ACTION BUTTONS -->
+  <div class="invoice-actions">
+
+    <button class="print-btn" (click)="printInvoice()">
+      🖨 Print
+    </button>
+
+    <button class="download-btn" (click)="downloadPDF()">
+      ⬇ Download PDF
+    </button>
 
   </div>
 

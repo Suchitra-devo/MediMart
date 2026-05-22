@@ -1,44 +1,16 @@
-<div class="navbar">
+<div class="navbar" *ngIf="!isAuthPage()">
 
-  <!-- LOGO -->
   <div class="logo">
     💊 MediMart
   </div>
 
-  <!-- RIGHT ACTIONS -->
   <div class="nav-actions">
 
-    <!-- THEME TOGGLE -->
-    <button
-      class="theme-btn"
-      (click)="toggleTheme()"
-    >
-
-      {{ isDarkMode()
-        ? '☀️ Light'
-        : '🌙 Dark'
-      }}
-
+    <button (click)="toggleTheme()">
+      {{ darkMode ? '🌙 Dark' : '☀ Light' }}
     </button>
 
-    <!-- LANDING PAGE -->
-    <button
-      *ngIf="isLandingPage()"
-      class="login-btn"
-      (click)="goToLogin()"
-    >
-      Login
-    </button>
-
-    <!-- OTHER PAGES -->
-    <button
-      *ngIf="
-        !isLandingPage()
-        && !isAuthPage()
-      "
-      class="logout-btn"
-      (click)="logout()"
-    >
+    <button (click)="logout()">
       Logout
     </button>
 

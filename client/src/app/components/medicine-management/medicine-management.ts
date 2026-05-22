@@ -3,7 +3,7 @@ import {
   OnInit,
   ChangeDetectorRef
 } from '@angular/core';
-
+import { AppHeaderComponent } from '../app-header/app-header';
 import { CommonModule }
 from '@angular/common';
 
@@ -28,7 +28,7 @@ from '../../services/medicine.service';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,AppHeaderComponent 
   ],
 
   templateUrl: './medicine-management.html',
