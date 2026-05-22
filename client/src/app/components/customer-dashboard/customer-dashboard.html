@@ -1,10 +1,9 @@
-<app-header></app-header>
 <div class="layout">
 
   <!-- LEFT SIDEBAR -->
   <div class="sidebar">
 
-    <h3>Categories</h3>
+    <h2>💊 Categories</h2>
 
     <ul>
 
@@ -23,8 +22,15 @@
   <!-- RIGHT CONTENT -->
   <div class="content">
 
-    <!-- SEARCH -->
-    <div class="search-box">
+    <!-- HEADER -->
+    <div class="header">
+
+      <div>
+        <h2>Available Medicines</h2>
+        <p class="sub-text">
+          Browse and search medicines easily
+        </p>
+      </div>
 
       <input
         type="text"
@@ -35,16 +41,54 @@
 
     </div>
 
-    <!-- CARDS -->
+    <!-- STATS BAR (NEW ENHANCEMENT) -->
+    <div class="stats-bar">
+
+      <div class="stat">
+        <span class="label">Total</span>
+        <span class="value">{{ medicines.length }}</span>
+      </div>
+
+      <div class="stat">
+        <span class="label">Category</span>
+        <span class="value">{{ selectedCategory }}</span>
+      </div>
+
+    </div>
+
+    <!-- GRID -->
     <div class="medicine-grid">
 
       <div class="medicine-card" *ngFor="let med of medicines">
 
-        <h3>{{ med.name }}</h3>
+        <!-- CARD HEADER -->
+        <div class="card-header">
 
-        <p>{{ med.composition }}</p>
+          <h3>{{ med.name }}</h3>
 
-        <p class="price">₹{{ med.price }}</p>
+          <span class="tag">
+            {{ med.category }}
+          </span>
+
+        </div>
+
+        <!-- DESCRIPTION -->
+        <p class="desc">
+          {{ med.composition }}
+        </p>
+
+        <!-- FOOTER -->
+        <div class="card-footer">
+
+          <span class="price">
+            ₹{{ med.price }}
+          </span>
+
+          <span class="stock">
+            {{ med.quantity }} strips
+          </span>
+
+        </div>
 
       </div>
 

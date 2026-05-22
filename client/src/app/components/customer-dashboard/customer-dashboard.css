@@ -3,169 +3,165 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ================= MAIN LAYOUT ================= */
-
+/* MAIN LAYOUT */
 .layout {
-
   display: flex;
-
   min-height: 100vh;
 }
 
-/* ================= SIDEBAR (20%) ================= */
-
+/* ================= SIDEBAR ================= */
 .sidebar {
-
   width: 20%;
-
   background: #0f172a;
-
   color: white;
-
   padding: 20px;
-
-  font-size: 18px;
 }
 
-.sidebar h3 {
-
+.sidebar h2 {
   margin-bottom: 20px;
-
-  font-size: 20px;
 }
 
 .sidebar ul {
-
   list-style: none;
-
   padding: 0;
 }
 
 .sidebar li {
-
-  padding: 14px;
-
+  padding: 12px;
   margin-bottom: 10px;
-
   border-radius: 8px;
-
   cursor: pointer;
-
   transition: 0.3s;
-
-  font-size: 16px;
 }
 
 .sidebar li:hover {
-
   background: #1e293b;
 }
 
 .sidebar li.active {
-
   background: #22c55e;
-
-  color: white;
   font-weight: bold;
 }
 
-/* ================= CONTENT (80%) ================= */
-
+/* ================= CONTENT ================= */
 .content {
-
   width: 80%;
-
-  padding: 30px;
-
-  background: linear-gradient(
-    135deg,
-    #0b3b3b,
-    #134e4a,
-    #164e63
-  );
+  padding: 25px;
+  background: linear-gradient(135deg, #0b3b3b, #134e4a);
 }
 
-/* ================= SEARCH ================= */
-
-.search-box {
-
-  margin-bottom: 25px;
+/* ================= HEADER ================= */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
-.search-box input {
+.header h2 {
+  color: white;
+  margin: 0;
+}
 
-  width: 70%;
+.sub-text {
+  color: #cbd5e1;
+  font-size: 13px;
+  margin-top: 5px;
+}
 
-  padding: 14px;
-
-  border-radius: 12px;
-
+.header input {
+  width: 40%;
+  padding: 12px;
+  border-radius: 10px;
   border: none;
-
   outline: none;
+}
 
-  font-size: 15px;
+/* ================= STATS BAR (NEW) ================= */
+.stats-bar {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.stat {
+  background: rgba(255,255,255,0.1);
+  padding: 10px 15px;
+  border-radius: 10px;
+  color: white;
+  min-width: 120px;
+}
+
+.stat .label {
+  font-size: 12px;
+  color: #cbd5e1;
+}
+
+.stat .value {
+  font-size: 16px;
+  font-weight: bold;
 }
 
 /* ================= GRID ================= */
-
 .medicine-grid {
-
   display: grid;
-
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(260px, 1fr)
-  );
-
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
 }
 
 /* ================= CARD ================= */
-
 .medicine-card {
-
   background: white;
-
-  padding: 25px;
-
+  padding: 18px;
   border-radius: 16px;
-
-  box-shadow: 0 10px 22px rgba(0,0,0,0.15);
-
+  box-shadow: 0 8px 18px rgba(0,0,0,0.2);
   transition: 0.3s;
-
-  font-size: 16px;
 }
 
 .medicine-card:hover {
-
   transform: translateY(-6px);
 }
 
-/* ================= TEXT ================= */
+/* CARD HEADER */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .medicine-card h3 {
-
-  font-size: 20px;
-
-  margin-bottom: 8px;
-
+  margin: 0;
   color: #0f172a;
 }
 
-.medicine-card p {
+/* CATEGORY TAG */
+.tag {
+  background: #22c55e;
+  color: white;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
 
-  margin: 5px 0;
+/* DESCRIPTION */
+.desc {
+  margin: 10px 0;
+  color: #64748b;
+}
 
-  color: #475569;
+/* FOOTER */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
 .price {
-
-  font-size: 18px;
-
   font-weight: bold;
-
   color: #16a34a;
+}
+
+.stock {
+  font-size: 13px;
+  color: #475569;
 }

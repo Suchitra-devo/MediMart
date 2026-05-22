@@ -19,19 +19,13 @@ from '../../services/medicine.service';
 export class AddMedicineComponent {
 
   medicine = {
-
     name: '',
-
     composition: '',
-
     description: '',
-
     alternateMedicine: '',
-
+    category: '',
     quantity: 0,
-
     price: 0,
-
     expiryDate: ''
   };
 
@@ -40,49 +34,42 @@ export class AddMedicineComponent {
     private router: Router
   ) {}
 
-  saveMedicine() {
+  // CATEGORY HANDLER (SAFE)
+  onCategoryChange(event: Event): void {
 
-  // VALIDATION
+    const value =
+      (event.target as HTMLSelectElement).value;
 
-  if(
-
-    !this.medicine.name ||
-
-    this.medicine.quantity <= 0 ||
-
-    this.medicine.price <= 0 ||
-
-    !this.medicine.expiryDate
-  ) {
-
-    alert(
-      'Please fill all mandatory fields correctly'
-    );
-
-    return;
+    this.medicine.category = value;
   }
 
-  // SAVE TO BACKEND
+  saveMedicine() {
 
-  this.medicineService
-      .addMedicine(this.medicine)
+    // VALIDATION
+    if (
+      !this.medicine.name ||
+      !this.medicine.category ||
+      this.medicine.quantity <= 0 ||
+      this.medicine.price <= 0 ||
+      !this.medicine.expiryDate
+    ) {
+      alert('Please fill all mandatory fields correctly');
+      return;
+    }
+
+    this.medicineService.addMedicine(this.medicine)
       .subscribe({
 
-    next: () => {
+        next: () => {
 
-      alert(
-        'Medicine Added Successfully'
-      );
+          alert('Medicine Added Successfully');
 
-      this.router.navigate([
-        '/medicine-management'
-      ]);
-    },
+          this.router.navigate(['/medicine-management']);
+        },
 
-    error: (err) => {
-
-      console.log(err);
-    }
-  });
-}
+        error: (err) => {
+          console.log(err);
+        }
+      });
+  }
 }

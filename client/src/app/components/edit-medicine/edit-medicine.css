@@ -1,13 +1,8 @@
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* ================= CONTAINER ================= */
-
 .edit-container {
 
   min-height: 100vh;
+
+  background: linear-gradient(to right, #00897B, #004D40);
 
   display: flex;
 
@@ -15,104 +10,141 @@ body {
 
   align-items: center;
 
-  padding: 30px;
-
-  background: linear-gradient(
-    135deg,
-    #0b3b3b,
-    #134e4a,
-    #164e63
-  );
+  padding: 20px;
 }
 
-/* ================= CARD ================= */
+/* CARD SAME AS ADD */
+.form-card {
 
-.edit-card {
-
-  width: 500px;
+  width: 600px;
 
   background: white;
 
-  padding: 25px;
+  padding: 30px;
 
-  border-radius: 18px;
+  border-radius: 14px;
 
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-
-  transition: 0.3s;
-}
-
-.edit-card:hover {
-
-  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
 
 /* TITLE */
-
-.edit-card h2 {
+h2 {
 
   text-align: center;
 
-  margin-bottom: 20px;
+  color: #00695C;
 
-  color: #0f172a;
+  margin-bottom: 20px;
 }
 
-/* FORM GRID */
-
-.form-grid {
+/* FORM */
+.medicine-form {
 
   display: flex;
 
   flex-direction: column;
 
-  gap: 12px;
+  gap: 15px;
 }
 
-/* INPUTS */
+/* ROW */
+.row {
 
-.edit-card input,
-.edit-card textarea {
+  display: flex;
 
-  padding: 12px;
+  gap: 15px;
+}
 
-  border: 1px solid #cbd5e1;
+/* FIELD */
+.field {
 
-  border-radius: 10px;
+  flex: 1;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+/* LABEL */
+label {
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: #00695C;
+
+  margin-bottom: 5px;
+}
+
+/* INPUT / TEXTAREA / SELECT */
+input,
+textarea,
+select {
+
+  padding: 10px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 8px;
+
+  font-size: 14px;
 
   outline: none;
 
-  font-size: 14px;
+  transition: 0.3s;
 }
 
-.edit-card textarea {
+/* FOCUS EFFECT */
+input:focus,
+textarea:focus,
+select:focus {
+
+  border-color: #00695C;
+
+  box-shadow: 0 0 5px rgba(0,105,92,0.3);
+}
+
+/* TEXTAREA */
+textarea {
+
+  min-height: 80px;
 
   resize: none;
+}
 
-  height: 80px;
+/* CATEGORY WRAPPER (MATCH ADD PAGE) */
+.category-wrapper {
+
+  display: flex;
+
+  gap: 10px;
+}
+
+.category-wrapper input {
+
+  flex: 2;
+}
+
+.category-wrapper select {
+
+  flex: 1;
 }
 
 /* BUTTON */
+button {
 
-.update-btn {
+  background: linear-gradient(90deg, #00695C, #004D40);
 
-  width: 100%;
-
-  margin-top: 15px;
-
-  padding: 12px;
+  color: white;
 
   border: none;
 
-  border-radius: 10px;
+  padding: 12px;
 
-  background: linear-gradient(
-    90deg,
-    #0f423e,
-    #135a51
-  );
+  border-radius: 8px;
 
-  color: white;
+  font-size: 15px;
 
   font-weight: bold;
 
@@ -121,7 +153,32 @@ body {
   transition: 0.3s;
 }
 
-.update-btn:hover {
+button:hover {
 
   transform: translateY(-2px);
+}
+
+/* REQUIRED STAR */
+.required {
+
+  color: red;
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+
+  .form-card {
+
+    width: 95%;
+  }
+
+  .row {
+
+    flex-direction: column;
+  }
+
+  .category-wrapper {
+
+    flex-direction: column;
+  }
 }

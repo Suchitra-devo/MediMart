@@ -1,68 +1,129 @@
 <div class="add-container">
 
-  <h2>Add Medicine</h2>
+  <div class="form-card">
 
-  <form
-  #medicineForm="ngForm"
-  class="medicine-form"
-  (ngSubmit)="saveMedicine()"
->
+    <h2>Add Medicine</h2>
 
-  <input
-    type="text"
-    placeholder="Medicine Name"
-    [(ngModel)]="medicine.name"
-    name="name"
-    required
-  />
+    <form
+      class="medicine-form"
+      (ngSubmit)="saveMedicine()"
+    >
 
-  <input
-    type="text"
-    placeholder="Composition"
-    [(ngModel)]="medicine.composition"
-    name="composition"
-  />
+      <!-- ROW 1 -->
+      <div class="row">
 
-  <textarea
-    placeholder="Description"
-    [(ngModel)]="medicine.description"
-    name="description"
-  ></textarea>
+        <div class="field">
+          <label>Medicine Name <span class="required">*</span></label>
+          <input
+            type="text"
+            [(ngModel)]="medicine.name"
+            name="name"
+            required
+          />
+        </div>
 
-  <input
-    type="text"
-    placeholder="Alternate Medicine"
-    [(ngModel)]="medicine.alternateMedicine"
-    name="alternateMedicine"
-  />
+        <div class="field">
+          <label>Composition</label>
+          <input
+            type="text"
+            [(ngModel)]="medicine.composition"
+            name="composition"
+          />
+        </div>
 
-  <input
-    type="number"
-    placeholder="Quantity Available"
-    [(ngModel)]="medicine.quantity"
-    name="quantity"
-    required
-  />
+      </div>
 
-  <input
-    type="number"
-    placeholder="Price Per Strip"
-    [(ngModel)]="medicine.price"
-    name="price"
-    required
-  />
+      <!-- ROW 2 -->
+      <div class="field">
+        <label>Description</label>
+        <textarea
+          [(ngModel)]="medicine.description"
+          name="description"
+        ></textarea>
+      </div>
 
-  <input
-    type="date"
-    [(ngModel)]="medicine.expiryDate"
-    name="expiryDate"
-    required
-  />
+      <!-- ROW 3 -->
+      <div class="field">
+        <label>Alternate Medicine</label>
+        <input
+          type="text"
+          [(ngModel)]="medicine.alternateMedicine"
+          name="alternateMedicine"
+        />
+      </div>
 
-  <button type="submit">
-  Save Medicine
-</button>
+      <!-- CATEGORY -->
+      <div class="field">
+        <label>Category <span class="required">*</span></label>
 
-</form>
+        <div class="category-wrapper">
+
+          <input
+            type="text"
+            placeholder="Enter category"
+            [(ngModel)]="medicine.category"
+            name="category"
+          />
+
+          <select
+            (change)="onCategoryChange($event)"
+          >
+            <option value="">Quick Select</option>
+            <option value="Fever">Fever</option>
+            <option value="Diabetes">Diabetes</option>
+            <option value="BP">BP</option>
+            <option value="Pain">Pain Relief</option>
+            <option value="Antibiotic">Antibiotic</option>
+            <option value="Nerve">Nerve</option>
+            <option value="Other">Other</option>
+          </select>
+
+        </div>
+      </div>
+
+      <!-- ROW 4 -->
+      <div class="row">
+
+        <div class="field">
+          <label>Quantity (Strips) <span class="required">*</span></label>
+          <input
+            type="number"
+            [(ngModel)]="medicine.quantity"
+            name="quantity"
+            required
+          />
+        </div>
+
+        <div class="field">
+          <label>Price (Per Strip) <span class="required">*</span></label>
+          <input
+            type="number"
+            [(ngModel)]="medicine.price"
+            name="price"
+            required
+          />
+        </div>
+
+      </div>
+
+      <!-- EXPIRY -->
+      <div class="field">
+        <label>Expiry Date <span class="required">*</span></label>
+        <input
+          type="date"
+          [(ngModel)]="medicine.expiryDate"
+          name="expiryDate"
+          required
+        />
+      </div>
+
+      <!-- BUTTON -->
+      <button type="submit">
+        Save Medicine
+      </button>
+
+    </form>
+
+  </div>
 
 </div>

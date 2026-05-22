@@ -1,68 +1,181 @@
-.add-container{
+.add-container {
 
-  min-height:100vh;
+  min-height: 100vh;
 
-  background:linear-gradient(to right, #00897B, #004D40);
+  background: linear-gradient(to right, #00897B, #004D40);
 
-  display:flex;
+  display: flex;
 
-  flex-direction:column;
+  justify-content: center;
 
-  justify-content:center;
+  align-items: center;
 
-  align-items:center;
+  padding: 20px;
 }
 
-.medicine-form{
+/* CARD */
+.form-card {
 
-  background:white;
+  width: 600px;
 
-  padding:30px;
+  background: white;
 
-  border-radius:12px;
+  padding: 30px;
 
-  display:flex;
+  border-radius: 14px;
 
-  flex-direction:column;
-
-  gap:15px;
-
-  width:300px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
 
-.medicine-form input{
+h2 {
 
-  padding:12px;
+  text-align: center;
 
-  border:1px solid #ccc;
+  color: #00695C;
 
-  border-radius:6px;
+  margin-bottom: 20px;
 }
 
-.medicine-form button{
+/* FORM */
+.medicine-form {
 
-  background:#00695C;
+  display: flex;
 
-  color:white;
+  flex-direction: column;
 
-  border:none;
-
-  padding:12px;
-
-  border-radius:6px;
-
-  cursor:pointer;
+  gap: 15px;
 }
 
-.medicine-form textarea{
+/* ROW SYSTEM */
+.row {
 
-  padding:12px;
+  display: flex;
 
-  border:1px solid #ccc;
+  gap: 15px;
+}
 
-  border-radius:6px;
+.field {
 
-  min-height:80px;
+  flex: 1;
 
-  resize:none;
+  display: flex;
+
+  flex-direction: column;
+}
+
+/* LABEL */
+label {
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: #00695C;
+
+  margin-bottom: 5px;
+}
+
+/* INPUT */
+input,
+textarea,
+select {
+
+  padding: 10px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+
+  outline: none;
+
+  transition: 0.3s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+
+  border-color: #00695C;
+
+  box-shadow: 0 0 5px rgba(0,105,92,0.3);
+}
+
+/* TEXTAREA */
+textarea {
+
+  min-height: 80px;
+
+  resize: none;
+}
+
+/* CATEGORY */
+.category-wrapper {
+
+  display: flex;
+
+  gap: 10px;
+}
+
+.category-wrapper input {
+
+  flex: 2;
+}
+
+.category-wrapper select {
+
+  flex: 1;
+}
+
+/* BUTTON */
+button {
+
+  background: linear-gradient(90deg, #00695C, #004D40);
+
+  color: white;
+
+  border: none;
+
+  padding: 12px;
+
+  border-radius: 8px;
+
+  font-size: 15px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+button:hover {
+
+  transform: translateY(-2px);
+}
+
+/* REQUIRED */
+.required {
+
+  color: red;
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+
+  .form-card {
+
+    width: 95%;
+  }
+
+  .row {
+
+    flex-direction: column;
+  }
+
+  .category-wrapper {
+
+    flex-direction: column;
+  }
 }

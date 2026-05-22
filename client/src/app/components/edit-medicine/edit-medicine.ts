@@ -6,9 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { MedicineService }
-from '../../services/medicine.service';
-
+import { MedicineService } from '../../services/medicine.service';
 
 import { ChangeDetectorRef } from '@angular/core';
 
@@ -19,19 +17,27 @@ import { ChangeDetectorRef } from '@angular/core';
   templateUrl: './edit-medicine.html',
   styleUrls: ['./edit-medicine.css']
 })
-export class EditMedicineComponent
-implements OnInit {
+export class EditMedicineComponent implements OnInit {
 
   medicineId: number = 0;
 
-  medicine: any = {};
+  medicine: any = {
+    name: '',
+    composition: '',
+    description: '',
+    alternateMedicine: '',
+    category: '',
+    quantity: 0,
+    price: 0,
+    expiryDate: ''
+  };
 
   constructor(
-  private route: ActivatedRoute,
-  private medicineService: MedicineService,
-  private router: Router,
-  private cdr: ChangeDetectorRef
-) {}
+    private route: ActivatedRoute,
+    private medicineService: MedicineService,
+    private router: Router,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
 
@@ -42,56 +48,69 @@ implements OnInit {
     this.loadMedicine();
   }
 
+  // =========================
+  // LOAD MEDICINE
+  // =========================
+
   loadMedicine() {
 
-  this.medicineService
+    this.medicineService
       .getMedicineById(this.medicineId)
       .subscribe({
 
-    next: (data: any) => {
+        next: (data: any) => {
 
-      this.medicine = {
-        name: data.name,
-        composition: data.composition,
-        description: data.description,
-        alternateMedicine: data.alternateMedicine,
-        quantity: data.quantity,
-        price: data.price,
-        expiryDate: data.expiryDate
-      };
+          this.medicine = {
+            name: data.name,
+            composition: data.composition,
+            description: data.description,
+            alternateMedicine: data.alternateMedicine,
+            category: data.category || '',
+            quantity: data.quantity,
+            price: data.price,
+            expiryDate: data.expiryDate
+          };
 
-      // FORCE UI UPDATE
-      this.cdr.detectChanges();
-    },
+          this.cdr.detectChanges();
+        },
 
-    error: (err) => {
-      console.log(err);
-    }
-  });
-}
+        error: (err) => {
+          console.log(err);
+        }
+      });
+  }
+
+  // =========================
+  // UPDATE MEDICINE
+  // =========================
 
   updateMedicine() {
 
+    if (!this.medicine.name ||
+        this.medicine.quantity <= 0 ||
+        this.medicine.price <= 0 ||
+        !this.medicine.expiryDate ||
+        !this.medicine.category) {
+
+      alert('Please fill all mandatory fields');
+
+      return;
+    }
+
     this.medicineService
-        .updateMedicine(
-          this.medicineId,
-          this.medicine
-        )
-        .subscribe({
+      .updateMedicine(this.medicineId, this.medicine)
+      .subscribe({
 
-      next: () => {
+        next: () => {
 
-        alert('Medicine Updated Successfully');
+          alert('Medicine Updated Successfully');
 
-        this.router.navigate([
-          '/medicine-management'
-        ]);
-      },
+          this.router.navigate(['/medicine-management']);
+        },
 
-      error: (err) => {
-
-        console.log(err);
-      }
-    });
+        error: (err) => {
+          console.log(err);
+        }
+      });
   }
 }

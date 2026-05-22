@@ -2,12 +2,11 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MedicineService } from '../../services/medicine.service';
-import { AppHeaderComponent }
-from '../app-header/app-header';
+
 @Component({
   selector: 'app-customer-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule,AppHeaderComponent],
+  imports: [CommonModule, FormsModule],
   templateUrl: './customer-dashboard.html',
   styleUrls: ['./customer-dashboard.css']
 })
@@ -17,7 +16,6 @@ export class CustomerDashboardComponent implements OnInit {
   allMedicines: any[] = [];
 
   searchText: string = '';
-
   selectedCategory: string = 'ALL';
 
   categories: string[] = [
@@ -40,6 +38,7 @@ export class CustomerDashboardComponent implements OnInit {
   }
 
   loadMedicines(): void {
+
     this.medicineService.getAllMedicines().subscribe({
       next: (data: any[]) => {
         this.allMedicines = data || [];
@@ -58,11 +57,10 @@ export class CustomerDashboardComponent implements OnInit {
 
     let filtered = [...this.allMedicines];
 
-    // CATEGORY FILTER
+    // ✅ FIXED CATEGORY FILTER (correct field)
     if (this.selectedCategory !== 'ALL') {
       filtered = filtered.filter(med =>
-        med.description?.toLowerCase()
-          .includes(this.selectedCategory.toLowerCase())
+        med.category === this.selectedCategory
       );
     }
 
