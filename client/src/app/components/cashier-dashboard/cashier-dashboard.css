@@ -506,3 +506,141 @@ app-header {
     #164e63
   );
 }
+
+
+/* ========================================
+   DARK MODE SUPPORT
+======================================== */
+
+body.dark-theme .cashier-container {
+
+  background: linear-gradient(
+    135deg,
+    #0f172a,
+    #111827,
+    #1e293b
+  );
+}
+
+/* HEADER */
+
+body.dark-theme .header {
+
+  background: linear-gradient(
+    90deg,
+    #111827,
+    #1f2937
+  );
+}
+
+/* STORE BOX */
+
+body.dark-theme .store-toggle-wrapper {
+
+  background: #1e293b;
+
+  border: 1px solid #334155;
+}
+
+/* LEFT + RIGHT PANELS */
+
+body.dark-theme .medicine-section,
+body.dark-theme .cart-section {
+
+  background: #1e293b;
+
+  color: #f8fafc;
+}
+
+/* TEXT */
+
+body.dark-theme .section-header h3,
+body.dark-theme .cart-section h3,
+body.dark-theme .med-details h4,
+body.dark-theme td {
+
+  color: #f8fafc;
+}
+
+body.dark-theme .composition,
+body.dark-theme .empty-cart {
+
+  color: #cbd5e1;
+}
+
+/* SEARCH + INPUTS */
+
+body.dark-theme .search-box,
+body.dark-theme .customer-input,
+body.dark-theme td input,
+body.dark-theme .discount-box input,
+body.dark-theme .qty-box input {
+
+  background: #0f172a;
+
+  color: white;
+
+  border: 1px solid #334155;
+}
+
+/* TABLE */
+
+body.dark-theme th {
+
+  background: #0f172a;
+}
+
+body.dark-theme td {
+
+  border-bottom: 1px solid #334155;
+}
+
+/* MEDICINE CARD */
+
+body.dark-theme .medicine-card {
+
+  background: #0f172a;
+
+  border: 1px solid #334155;
+}
+
+body.dark-theme .medicine-card:hover {
+
+  background: #1e293b;
+}
+
+/* BILL SUMMARY */
+
+body.dark-theme .bill-summary {
+
+  background: #0f172a;
+
+  border: 1px solid #334155;
+
+  color: #f8fafc;
+}
+
+/* BUTTONS */
+
+body.dark-theme .invoice-btn,
+body.dark-theme .print-btn,
+body.dark-theme .add-btn {
+
+  background: linear-gradient(
+    90deg,
+    #334155,
+    #475569
+  );
+}
+
+/* HOST */
+
+body.dark-theme :host {
+
+  background: linear-gradient(
+    135deg,
+    #0f172a,
+    #111827,
+    #1e293b
+  );
+}

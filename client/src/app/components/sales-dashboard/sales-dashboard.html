@@ -1,0 +1,135 @@
+<app-header></app-header>
+
+<div class="sales-container">
+
+  <!-- HEADER -->
+
+  <div class="sales-header">
+
+    <h1>📊 Sales Dashboard</h1>
+
+    <p>
+      Monitor invoices, revenue
+      and sales performance
+    </p>
+
+  </div>
+
+  <!-- STATS -->
+
+  <div class="stats-grid">
+
+    <!-- TOTAL SALES -->
+
+    <div class="stat-card">
+
+      <h2>💰</h2>
+
+      <h3>Total Revenue</h3>
+
+      <p>₹{{ totalSales }}</p>
+
+    </div>
+
+    <!-- TOTAL INVOICES -->
+
+    <div class="stat-card">
+
+      <h2>🧾</h2>
+
+      <h3>Total Invoices</h3>
+
+      <p>{{ totalInvoices }}</p>
+
+    </div>
+
+    <!-- TODAY SALES -->
+
+    <div class="stat-card">
+
+      <h2>📈</h2>
+
+      <h3>Today's Sales</h3>
+
+      <p>₹{{ todaySales }}</p>
+
+    </div>
+
+  </div>
+
+  <!-- TABLE SECTION -->
+
+  <div class="table-card">
+
+    <!-- TOPBAR -->
+
+    <div class="table-topbar">
+
+      <h2>
+        Invoice Records
+      </h2>
+
+      <input
+        type="text"
+        placeholder="Search invoice/customer..."
+        [(ngModel)]="searchText"
+        (input)="applyFilter()"
+        class="search-box"
+      />
+
+    </div>
+
+    <!-- TABLE -->
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>Invoice No</th>
+
+          <th>Customer</th>
+
+          <th>Amount</th>
+
+          <th>Date</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        <tr
+          *ngFor="
+            let invoice
+            of filteredInvoices
+          "
+        >
+
+          <td>
+            {{ invoice.invoiceNo }}
+          </td>
+
+          <td>
+            {{ invoice.customer }}
+          </td>
+
+          <td>
+            ₹{{ invoice.amount }}
+          </td>
+
+          <td>
+            {{ invoice.date }}
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

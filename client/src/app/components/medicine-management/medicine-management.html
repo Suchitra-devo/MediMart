@@ -1,9 +1,16 @@
 <div class="medicine-container">
 
+  <!-- TOPBAR -->
+
   <div class="topbar">
-    <h2>MediMart - Medicine Management</h2>
+
+    <h2>
+      💊 MediMart Medicine Management
+    </h2>
 
     <div class="actions">
+
+      <!-- SEARCH -->
 
       <input
         type="text"
@@ -13,109 +20,133 @@
         class="search-box"
       />
 
-      <button class="sort-btn" (click)="sortByName()">
+      <!-- SORT -->
+
+      <button
+        class="sort-btn"
+        (click)="sortByName()"
+      >
         Sort A–Z
       </button>
 
-      <button class="add-btn" routerLink="/add-medicine">
-  + Add Medicine
-</button>
+      <!-- ADD -->
+
+      <button
+        class="add-btn"
+        routerLink="/add-medicine"
+      >
+        + Add Medicine
+      </button>
 
     </div>
+
   </div>
+
+  <!-- TABLE -->
 
   <div class="table-card">
 
-  <h3>Medicine Inventory</h3>
+    <h3>
+      Medicine Inventory
+    </h3>
 
-  <!-- ADD MEDICINE FORM
-  <div class="form-section">
+    <table>
 
-    <input
-      type="text"
-      placeholder="Medicine Name"
-      [(ngModel)]="newMedicine.name"
-    />
+      <thead>
 
-    <input
-      type="number"
-      placeholder="Price"
-      [(ngModel)]="newMedicine.price"
-    />
+        <tr>
 
-    <input
-      type="number"
-      placeholder="Quantity"
-      [(ngModel)]="newMedicine.quantity"
-    />
+          <th>ID</th>
 
-    <button class="add-btn" (click)="addMedicine()">
-      Add
-    </button>
+          <th>Name</th>
 
-  </div> -->
+          <th>Price</th>
 
-  <table>
+          <th>Quantity</th>
 
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
+          <th>Status</th>
 
-    <tbody>
+          <th>Actions</th>
 
-      <tr *ngFor="let med of medicines">
+        </tr>
 
-        <td>{{ med.id }}</td>
-        <td>{{ med.name }}</td>
-        <td>₹{{ med.price }}</td>
-        <td>{{ med.quantity }}</td>
+      </thead>
 
-        <td>
-          <span [ngClass]="med.quantity > 10 ? 'in-stock' : 'low-stock'">
+      <tbody>
 
-            {{ med.quantity > 10 ? 'In Stock' : 'Low Stock' }}
+        <tr *ngFor="let med of medicines">
 
-          </span>
-        </td>
+          <td>
+            {{ med.id }}
+          </td>
 
-        <td>
+          <td>
+            {{ med.name }}
+          </td>
 
-  <button
-  class="view-btn"
-  [routerLink]="['/medicine', med.id]"
->
-  View
-</button>
+          <td>
+            ₹{{ med.price }}
+          </td>
 
-  <button
-  class="edit-btn"
-  [routerLink]="['/edit-medicine', med.id]"
->
-  Edit
-</button>
+          <td>
+            {{ med.quantity }}
+          </td>
 
-  <button
-    class="delete-btn"
-    (click)="deleteMedicine(med.id)"
-  >
-    Delete
-  </button>
+          <!-- STOCK -->
 
-</td>
+          <td>
 
-      </tr>
+            <span
+              [ngClass]="
+                med.quantity > 10
+                ? 'in-stock'
+                : 'low-stock'
+              "
+            >
 
-    </tbody>
+              {{
+                med.quantity > 10
+                ? 'In Stock'
+                : 'Low Stock'
+              }}
 
-  </table>
+            </span>
 
-</div>
+          </td>
+
+          <!-- ACTIONS -->
+
+          <td>
+
+            <button
+              class="view-btn"
+              [routerLink]="['/medicine', med.id]"
+            >
+              View
+            </button>
+
+            <button
+              class="edit-btn"
+              [routerLink]="['/edit-medicine', med.id]"
+            >
+              Edit
+            </button>
+
+            <button
+              class="delete-btn"
+              (click)="deleteMedicine(med.id)"
+            >
+              Delete
+            </button>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
 
 </div>

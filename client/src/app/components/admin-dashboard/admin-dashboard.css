@@ -1,80 +1,317 @@
-body{
-  margin:0;
+body {
+
+  margin: 0;
+
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.dashboard{
+/* ================= DASHBOARD ================= */
 
-  min-height:100vh;
+.dashboard {
 
-  background:#f4f6f9;
+  min-height: 100vh;
+
+  padding: 30px;
+
+  background: linear-gradient(
+    135deg,
+    #0b3b3b,
+    #134e4a,
+    #164e63
+  );
 }
 
-.navbar{
+/* ================= HEADER ================= */
 
-  background:#0d6efd;
+.dashboard-header {
 
-  color:white;
+  text-align: center;
 
-  padding:20px;
+  margin-bottom: 35px;
 
-  font-size:24px;
-
-  font-weight:bold;
-
-  text-align:center;
-
-  box-shadow:0px 2px 8px rgba(0,0,0,0.2);
+  color: white;
 }
 
-.card{
+.dashboard-header h1 {
 
-  width:350px;
+  font-size: 42px;
 
-  margin:80px auto;
-
-  background:white;
-
-  padding:30px;
-
-  border-radius:12px;
-
-  text-align:center;
-
-  box-shadow:0px 4px 12px rgba(0,0,0,0.15);
+  margin-bottom: 10px;
 }
 
-.card h2{
+.dashboard-header p {
 
-  margin-bottom:30px;
+  color: #dbeafe;
 
-  color:#333;
+  font-size: 18px;
 }
 
-.btn{
+/* ================= STATS ================= */
 
-  width:100%;
+.stats-grid {
 
-  padding:14px;
+  display: grid;
 
-  border:none;
+  grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
 
-  border-radius:6px;
+  gap: 20px;
 
-  background:#0d6efd;
-
-  color:white;
-
-  font-size:16px;
-
-  cursor:pointer;
-
-  transition:0.3s;
+  margin-bottom: 35px;
 }
 
-.btn:hover{
+.stat-card {
 
-  background:#0b5ed7;
+  background: white;
 
-  transform:scale(1.03);
+  border-radius: 18px;
+
+  padding: 25px;
+
+  text-align: center;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.12);
+
+  transition: 0.3s;
+}
+
+.stat-card:hover {
+
+  transform: translateY(-5px);
+}
+
+.stat-card h2 {
+
+  font-size: 40px;
+
+  margin-bottom: 10px;
+}
+
+.stat-card h3 {
+
+  color: #0f172a;
+
+  margin-bottom: 10px;
+}
+
+.stat-card p {
+
+  color: #047857;
+
+  font-size: 24px;
+
+  font-weight: bold;
+}
+
+/* ================= ACTION GRID ================= */
+
+.action-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(320px, 1fr));
+
+  gap: 25px;
+}
+
+/* ================= ACTION CARD ================= */
+
+.action-card {
+
+  background: white;
+
+  border-radius: 20px;
+
+  padding: 30px;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.15);
+}
+
+.action-card h2 {
+
+  margin-bottom: 15px;
+
+  color: #0f172a;
+}
+
+.action-card p {
+
+  color: #64748b;
+
+  margin-bottom: 25px;
+
+  line-height: 1.6;
+}
+
+/* ================= BUTTON ================= */
+
+.action-btn {
+
+  width: 100%;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: linear-gradient(
+    90deg,
+    #0f423e,
+    #135a51
+  );
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.action-btn:hover {
+
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   DARK MODE
+======================================== */
+
+body.dark-theme .dashboard {
+
+  background: linear-gradient(
+    135deg,
+    #0f172a,
+    #111827,
+    #1e293b
+  );
+}
+
+body.dark-theme .stat-card,
+body.dark-theme .action-card {
+
+  background: #1e293b;
+
+  color: #f8fafc;
+}
+
+body.dark-theme .stat-card h3,
+body.dark-theme .action-card h2 {
+
+  color: #f8fafc;
+}
+
+body.dark-theme .action-card p {
+
+  color: #cbd5e1;
+}
+
+body.dark-theme .action-btn {
+
+  background: linear-gradient(
+    90deg,
+    #334155,
+    #475569
+  );
+}
+
+
+/* SALES BUTTON */
+
+.sales-btn{
+
+  width: 100%;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: linear-gradient(
+    90deg,
+    #0f423e,
+    #135a51
+  );
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+
+  margin-top: 0;
+}
+
+.sales-btn:hover{
+
+  transform: translateY(-2px);
+}
+
+/* DARK MODE */
+
+body.dark-theme .sales-btn {
+
+  background: linear-gradient(
+    90deg,
+    #334155,
+    #475569
+  );
+}
+
+
+/* ================= MINI VIEW BUTTON ================= */
+
+.mini-btn {
+
+  margin-top: 12px;
+
+  padding: 8px 18px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: linear-gradient(
+    90deg,
+    #0f423e,
+    #135a51
+  );
+
+  color: white;
+
+  font-size: 14px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.mini-btn:hover {
+
+  transform: translateY(-2px);
+}
+
+/* DARK MODE */
+
+body.dark-theme .mini-btn {
+
+  background: linear-gradient(
+    90deg,
+    #334155,
+    #475569
+  );
 }

@@ -1,4 +1,6 @@
-/* NAVBAR */
+/* =========================
+   NAVBAR
+========================= */
 
 .navbar {
 
@@ -14,7 +16,6 @@
 
   border-radius: 16px;
 
-  /* TEAL GREEN THEME */
   background: linear-gradient(
     90deg,
     #0f423e,
@@ -23,9 +24,29 @@
 
   box-shadow:
     0 6px 18px rgba(0,0,0,0.15);
+
+  transition: 0.4s;
 }
 
-/* LOGO */
+/* =========================
+   DARK NAVBAR
+========================= */
+
+body.dark-theme .navbar {
+
+  background: linear-gradient(
+    90deg,
+    #0f172a,
+    #1e293b
+  );
+
+  box-shadow:
+    0 6px 18px rgba(0,0,0,0.35);
+}
+
+/* =========================
+   LOGO
+========================= */
 
 .logo {
 
@@ -38,10 +59,26 @@
   letter-spacing: 1px;
 }
 
-/* BUTTONS */
+/* =========================
+   RIGHT SECTION
+========================= */
+
+.nav-actions {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
 
 .login-btn,
-.logout-btn {
+.logout-btn,
+.theme-btn {
 
   border: none;
 
@@ -58,7 +95,9 @@
   transition: 0.3s;
 }
 
-/* LOGIN */
+/* =========================
+   LOGIN
+========================= */
 
 .login-btn {
 
@@ -67,7 +106,9 @@
   color: #133330;
 }
 
-/* LOGOUT */
+/* =========================
+   LOGOUT
+========================= */
 
 .logout-btn {
 
@@ -76,10 +117,33 @@
   color: white;
 }
 
-/* HOVER */
+/* =========================
+   THEME BUTTON
+========================= */
+
+.theme-btn {
+
+  background: #ffffff;
+
+  color: #133330;
+}
+
+/* DARK THEME BUTTON */
+
+body.dark-theme .theme-btn {
+
+  background: #334155;
+
+  color: #f8fafc;
+}
+
+/* =========================
+   HOVER
+========================= */
 
 .login-btn:hover,
-.logout-btn:hover {
+.logout-btn:hover,
+.theme-btn:hover {
 
   transform: translateY(-2px);
 

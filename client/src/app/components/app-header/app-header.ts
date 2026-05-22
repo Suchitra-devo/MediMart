@@ -1,14 +1,14 @@
-import { Component }
-from '@angular/core';
+import { Component } from '@angular/core';
 
-import { CommonModule }
-from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 import {
   Router,
   NavigationEnd
-}
-from '@angular/router';
+} from '@angular/router';
+
+import { ThemeService }
+from '../../services/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -24,8 +24,11 @@ export class AppHeaderComponent {
 
   currentUrl = '';
 
+  darkMode = false;
+
   constructor(
-    private router: Router
+    private router: Router,
+    public themeService: ThemeService
   ) {
 
     this.router.events.subscribe(event => {
@@ -35,20 +38,20 @@ export class AppHeaderComponent {
         this.currentUrl = event.url;
       }
     });
+
+    // INITIAL THEME STATE
+    this.darkMode =
+      this.themeService.isDarkMode();
   }
 
-  // =====================
-  // LANDING PAGE CHECK
-  // =====================
+  // =========================
+  // PAGE CHECKS
+  // =========================
 
   isLandingPage(): boolean {
 
     return this.currentUrl === '/';
   }
-
-  // =====================
-  // LOGIN PAGE CHECK
-  // =====================
 
   isAuthPage(): boolean {
 
@@ -56,23 +59,48 @@ export class AppHeaderComponent {
       || this.currentUrl === '/register';
   }
 
-  // =====================
-  // LOGIN NAVIGATION
-  // =====================
+  // Hide navbar on auth pages
+  isHiddenPage(): boolean {
+
+    return this.isAuthPage();
+  }
+
+  // =========================
+  // NAVIGATION
+  // =========================
 
   goToLogin(): void {
 
     this.router.navigate(['/login']);
   }
 
-  // =====================
+  // =========================
   // LOGOUT
-  // =====================
+  // =========================
 
   logout(): void {
 
     localStorage.clear();
 
-    this.router.navigate(['/']);
+    this.darkMode = false;
+
+    this.router.navigate(['/login']);
+  }
+
+  // =========================
+  // THEME TOGGLE
+  // =========================
+
+  toggleTheme(): void {
+
+    this.themeService.toggleTheme();
+
+    this.darkMode =
+      this.themeService.isDarkMode();
+  }
+
+  isDarkMode(): boolean {
+
+    return this.darkMode;
   }
 }

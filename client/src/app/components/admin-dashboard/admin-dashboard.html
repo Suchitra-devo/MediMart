@@ -1,22 +1,117 @@
+<app-header></app-header>
+
 <div class="dashboard">
 
-  <div class="navbar">
-    Admin Dashboard
+  <!-- TOP SECTION -->
+  <div class="dashboard-header">
+
+    <h1>🛡️ Admin Dashboard</h1>
+
+    <p>
+      Manage medicines, monitor stock
+      and track sales
+    </p>
+
   </div>
 
-  <div class="card">
+  <!-- STATS -->
+  <div class="stats-grid">
 
-    <h2>
-      Welcome Admin
-    </h2>
+    <!-- TOTAL MEDICINES -->
+    <div class="stat-card">
 
-    <button
-      class="btn"
-      routerLink="/medicine-management">
+      <h2>💊</h2>
 
-      Manage Medicines
+      <h3>Total Medicines</h3>
 
-    </button>
+      <p>{{ totalMedicines }}</p>
+
+    </div>
+
+    <!-- AVAILABLE STOCK -->
+    <div class="stat-card">
+
+      <h2>📦</h2>
+
+      <h3>Available Stock</h3>
+
+      <p>{{ totalStock }}</p>
+
+    </div>
+
+    <!-- SALES -->
+    <div class="stat-card">
+
+      <h2>💰</h2>
+
+      <h3>Today's Sales</h3>
+
+      <p>₹12,500</p>
+
+    </div>
+
+    <!-- LOW STOCK -->
+    <div class="stat-card">
+
+      <h2>⚠️</h2>
+
+      <h3>Low Stock</h3>
+
+      <p>{{ lowStockCount }} Medicines</p>
+
+      <button
+        class="mini-btn"
+        routerLink="/medicine-management"
+        [queryParams]="{ lowStock: true }"
+      >
+        View
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- ACTION CARDS -->
+  <div class="action-grid">
+
+    <!-- MEDICINE -->
+    <div class="action-card">
+
+      <h2>💊 Medicine Management</h2>
+
+      <p>
+        Add, edit, update and manage
+        medicines in inventory.
+      </p>
+
+      <button
+        class="action-btn"
+        routerLink="/medicine-management">
+
+        Edit Medicines
+
+      </button>
+
+    </div>
+
+    <!-- SALES -->
+    <div class="action-card">
+
+      <h2>📊 Sales Dashboard</h2>
+
+      <p>
+        View invoices, billing reports
+        and sales performance.
+      </p>
+
+      <button
+        class="sales-btn"
+        routerLink="/sales-dashboard"
+      >
+        View Sales
+      </button>
+
+    </div>
 
   </div>
 

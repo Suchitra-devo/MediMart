@@ -1,7 +1,55 @@
-<div class="container mt-5">
+<app-header></app-header>
+<div class="layout">
 
-    <h2>Customer Dashboard</h2>
+  <!-- LEFT SIDEBAR -->
+  <div class="sidebar">
 
-    <p>Welcome Customer</p>
+    <h3>Categories</h3>
+
+    <ul>
+
+      <li
+        *ngFor="let cat of categories"
+        [class.active]="cat === selectedCategory"
+        (click)="selectCategory(cat)"
+      >
+        {{ cat }}
+      </li>
+
+    </ul>
+
+  </div>
+
+  <!-- RIGHT CONTENT -->
+  <div class="content">
+
+    <!-- SEARCH -->
+    <div class="search-box">
+
+      <input
+        type="text"
+        placeholder="Search medicines..."
+        [(ngModel)]="searchText"
+        (input)="applyFilters()"
+      />
+
+    </div>
+
+    <!-- CARDS -->
+    <div class="medicine-grid">
+
+      <div class="medicine-card" *ngFor="let med of medicines">
+
+        <h3>{{ med.name }}</h3>
+
+        <p>{{ med.composition }}</p>
+
+        <p class="price">₹{{ med.price }}</p>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </div>

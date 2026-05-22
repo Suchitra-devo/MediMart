@@ -1,65 +1,127 @@
-.edit-container{
-
-  min-height:100vh;
-
-  background:linear-gradient(to right, #00897B, #004D40);
-
-  display:flex;
-
-  justify-content:center;
-
-  align-items:center;
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.edit-card{
+/* ================= CONTAINER ================= */
 
-  background:white;
+.edit-container {
 
-  padding:30px;
+  min-height: 100vh;
 
-  border-radius:12px;
+  display: flex;
 
-  width:350px;
+  justify-content: center;
 
-  box-shadow:0px 4px 12px rgba(0,0,0,0.2);
+  align-items: center;
+
+  padding: 30px;
+
+  background: linear-gradient(
+    135deg,
+    #0b3b3b,
+    #134e4a,
+    #164e63
+  );
 }
 
-.edit-card h2{
+/* ================= CARD ================= */
 
-  margin-bottom:20px;
+.edit-card {
 
-  color:#00695C;
+  width: 500px;
+
+  background: white;
+
+  padding: 25px;
+
+  border-radius: 18px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+  transition: 0.3s;
 }
 
-.edit-card form{
+.edit-card:hover {
 
-  display:flex;
-
-  flex-direction:column;
-
-  gap:15px;
+  transform: translateY(-4px);
 }
 
-.edit-card input{
+/* TITLE */
 
-  padding:12px;
+.edit-card h2 {
 
-  border:1px solid #ccc;
+  text-align: center;
 
-  border-radius:6px;
+  margin-bottom: 20px;
+
+  color: #0f172a;
 }
 
-.edit-card button{
+/* FORM GRID */
 
-  background:#00695C;
+.form-grid {
 
-  color:white;
+  display: flex;
 
-  border:none;
+  flex-direction: column;
 
-  padding:12px;
+  gap: 12px;
+}
 
-  border-radius:6px;
+/* INPUTS */
 
-  cursor:pointer;
+.edit-card input,
+.edit-card textarea {
+
+  padding: 12px;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  font-size: 14px;
+}
+
+.edit-card textarea {
+
+  resize: none;
+
+  height: 80px;
+}
+
+/* BUTTON */
+
+.update-btn {
+
+  width: 100%;
+
+  margin-top: 15px;
+
+  padding: 12px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: linear-gradient(
+    90deg,
+    #0f423e,
+    #135a51
+  );
+
+  color: white;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.update-btn:hover {
+
+  transform: translateY(-2px);
 }

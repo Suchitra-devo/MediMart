@@ -106,6 +106,14 @@ export const routes: Routes = [
     canActivate: [AuthGuard]
   },
 
+  {
+  path: 'sales-dashboard',
+  canActivate: [AuthGuard],
+  loadComponent: () =>
+    import('./components/sales-dashboard/sales-dashboard')
+    .then(m => m.SalesDashboardComponent)
+},
+
   /* INVOICE */
   {
     path: 'invoice',

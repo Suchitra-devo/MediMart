@@ -2,71 +2,67 @@
 
   <div class="edit-card">
 
-    <h2>Edit Medicine</h2>
+    <h2>✏️ Edit Medicine</h2>
 
     <form (ngSubmit)="updateMedicine()">
 
-      <!-- NAME -->
-      <input
-        type="text"
-        placeholder="Medicine Name"
-        [(ngModel)]="medicine.name"
-        name="name"
-        required
-      />
+      <div class="form-grid">
 
-      <!-- COMPOSITION -->
-      <input
-        type="text"
-        placeholder="Composition"
-        [(ngModel)]="medicine.composition"
-        name="composition"
-      />
+        <input
+          type="text"
+          placeholder="Medicine Name"
+          [(ngModel)]="medicine.name"
+          name="name"
+          required
+        />
 
-      <!-- DESCRIPTION -->
-      <textarea
-        placeholder="Description"
-        [(ngModel)]="medicine.description"
-        name="description"
-      ></textarea>
+        <input
+          type="text"
+          placeholder="Composition"
+          [(ngModel)]="medicine.composition"
+          name="composition"
+        />
 
-      <!-- ALTERNATE MEDICINE -->
-      <input
-        type="text"
-        placeholder="Alternate Medicine"
-        [(ngModel)]="medicine.alternateMedicine"
-        name="alternateMedicine"
-      />
+        <input
+          type="text"
+          placeholder="Alternate Medicine"
+          [(ngModel)]="medicine.alternateMedicine"
+          name="alternateMedicine"
+        />
 
-      <!-- QUANTITY -->
-      <input
-        type="number"
-        placeholder="Quantity"
-        [(ngModel)]="medicine.quantity"
-        name="quantity"
-        required
-      />
+        <textarea
+          placeholder="Description"
+          [(ngModel)]="medicine.description"
+          name="description"
+        ></textarea>
 
-      <!-- PRICE -->
-      <input
-        type="number"
-        placeholder="Price"
-        [(ngModel)]="medicine.price"
-        name="price"
-        required
-      />
+        <input
+          type="number"
+          placeholder="Quantity (Strips)"
+          [(ngModel)]="medicine.quantity"
+          name="quantity"
+          required
+        />
 
-      <!-- EXPIRY DATE -->
-      <input
-        type="date"
-        [(ngModel)]="medicine.expiryDate"
-        name="expiryDate"
-        required
-      />
+        <input
+          type="number"
+          placeholder="Price"
+          [(ngModel)]="medicine.price"
+          name="price"
+          required
+        />
 
-      <!-- BUTTON -->
-      <button type="submit">
-        Update Medicine
+        <input
+          type="date"
+          [(ngModel)]="medicine.expiryDate"
+          name="expiryDate"
+          required
+        />
+
+      </div>
+
+      <button type="submit" class="update-btn">
+        💾 Update Medicine
       </button>
 
     </form>

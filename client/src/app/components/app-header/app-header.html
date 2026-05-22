@@ -5,22 +5,43 @@
     💊 MediMart
   </div>
 
-  <!-- LANDING PAGE -->
-  <button
-    *ngIf="isLandingPage()"
-    class="login-btn"
-    (click)="goToLogin()"
-  >
-    Login
-  </button>
+  <!-- RIGHT ACTIONS -->
+  <div class="nav-actions">
 
-  <!-- OTHER PAGES -->
-  <button
-    *ngIf="!isLandingPage() && !isAuthPage()"
-    class="logout-btn"
-    (click)="logout()"
-  >
-    Logout
-  </button>
+    <!-- THEME TOGGLE -->
+    <button
+      class="theme-btn"
+      (click)="toggleTheme()"
+    >
+
+      {{ isDarkMode()
+        ? '☀️ Light'
+        : '🌙 Dark'
+      }}
+
+    </button>
+
+    <!-- LANDING PAGE -->
+    <button
+      *ngIf="isLandingPage()"
+      class="login-btn"
+      (click)="goToLogin()"
+    >
+      Login
+    </button>
+
+    <!-- OTHER PAGES -->
+    <button
+      *ngIf="
+        !isLandingPage()
+        && !isAuthPage()
+      "
+      class="logout-btn"
+      (click)="logout()"
+    >
+      Logout
+    </button>
+
+  </div>
 
 </div>
