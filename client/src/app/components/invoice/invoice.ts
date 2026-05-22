@@ -18,7 +18,7 @@ import html2canvas from 'html2canvas';
   templateUrl: './invoice.html',
   styleUrls: ['./invoice.css']
 })
-export class InvoiceComponent implements OnInit {
+export class InvoiceComponent {
 
   @ViewChild('invoiceContent', { static: false })
   invoiceContent!: ElementRef;
@@ -76,13 +76,7 @@ export class InvoiceComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-
-    if (this.autoPrint) {
-
-      setTimeout(() => window.print(), 800);
-    }
-  }
+  
 
   // =========================
   // EDIT ORDER FUNCTIONS

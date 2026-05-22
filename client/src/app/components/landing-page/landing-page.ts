@@ -3,8 +3,7 @@ import {
   OnInit,
   OnDestroy
 } from '@angular/core';
-import { AppHeaderComponent }
-from '../app-header/app-header';
+
 import { CommonModule }
 from '@angular/common';
 
@@ -14,8 +13,7 @@ from '@angular/router';
 @Component({
   selector: 'app-landing-page',
   standalone: true,
-  imports: [CommonModule,
-  AppHeaderComponent],
+  imports: [CommonModule],
   templateUrl: './landing-page.html',
   styleUrls: ['./landing-page.css']
 })

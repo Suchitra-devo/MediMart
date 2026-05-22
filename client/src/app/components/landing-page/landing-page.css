@@ -238,7 +238,39 @@ body{
     transform:translateY(0);
   }
 }
+.landing-header {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
 
+.landing-header button {
+  padding: 14px 28px;   /* increased size */
+  font-size: 16px;      /* bigger text */
+  font-weight: bold;    /* stronger CTA */
+
+  border: none;
+  background: #00695C;
+  color: white;
+
+  border-radius: 10px;  /* slightly smoother */
+  cursor: pointer;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* subtle depth */
+
+  transition: 0.3s ease;
+}
+
+/* hover effect */
+.landing-header button:hover {
+  background: #004D40;
+  transform: scale(1.05);
+}
+
+/* click effect */
+.landing-header button:active {
+  transform: scale(0.97);
+}
 /* RESPONSIVE */
 @media(max-width:768px){
 
